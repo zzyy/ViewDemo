@@ -159,10 +159,10 @@ public class DragHelperView extends ViewGroup {
 
                 int childTop = 0;
                 float newOffset = 1;
-                if (lp.gravity == Gravity.BOTTOM) {
+//                if (lp.gravity == Gravity.BOTTOM) {
                     childTop = height - (int) (childHeight * lp.onScreen);
                     newOffset = (height - childTop) / childWidth;
-                }
+//                }
 
                 final boolean changeOffset = newOffset != lp.onScreen;
 
@@ -184,7 +184,7 @@ public class DragHelperView extends ViewGroup {
         ViewDragHelper mDragger;
 
         public void setDragger(ViewDragHelper dragger) {
-            this.mDragger = mDragger;
+            this.mDragger = dragger;
         }
 
         @Override
@@ -213,8 +213,8 @@ public class DragHelperView extends ViewGroup {
 
         @Override
         public void onEdgeDragStarted(int edgeFlags, int pointerId) {
+            Log.w("zy", "onEdgeDragStarted mDragView="+ mDragView);
             mDragger.captureChildView(mDragView, pointerId);
-            Log.w("zy", "onEdgeDragStarted");
         }
 
         @Override
