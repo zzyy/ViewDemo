@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="DragHelperView">
-
+    <declare-styleable name="DragHelperView_LayoutParams">
+        <attr name="gravity" format="enum">
+            <enum name="bottom" value="4"/>
+            <enum name="left" value="1"/>
+        </attr>
     </declare-styleable>
 
 </resources>

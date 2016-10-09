@@ -6,10 +6,13 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.simon.example.viewdemo.R;
 
 /**
  * Created by Simon on 2016/10/7.
@@ -42,8 +45,9 @@ public class DragHelperView extends ViewGroup {
 
         mBottomCallback = new ViewDragCallback();
         mBottomDragger = ViewDragHelper.create(this, TOUCH_SLOP_SENSITIVITY, mBottomCallback);
-        mBottomDragger.setEdgeTrackingEnabled( ViewDragHelper.EDGE_BOTTOM );
+        mBottomDragger.setEdgeTrackingEnabled( ViewDragHelper.EDGE_BOTTOM | ViewDragHelper.EDGE_LEFT);
         mBottomDragger.setMinVelocity( minVel );
+        mBottomCallback.setDragger(mBottomDragger);
 
     }
 
@@ -51,6 +55,15 @@ public class DragHelperView extends ViewGroup {
     public void addView(View child, ViewGroup.LayoutParams params) {
         super.addView(child, params);
 
+        if(isDragView(child)){
+            mDragView = child;
+        }
+
+    }
+
+    @Override
+    public ViewGroup.LayoutParams generateLayoutParams(AttributeSet attrs) {
+        return new LayoutParams(getContext(), attrs);
     }
 
     boolean isContentView(View view) {
@@ -69,7 +82,22 @@ public class DragHelperView extends ViewGroup {
         final boolean interceptForDrag = mBottomDragger.shouldInterceptTouchEvent( ev );
 
 
-        return super.onInterceptTouchEvent(ev);
+        return interceptForDrag;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        mBottomDragger.processTouchEvent(event);
+        return true;
+    }
+
+    @Override
+    public void computeScroll() {
+        super.computeScroll();
+
+        if (mBottomDragger.continueSettling(true)){
+            ViewCompat.postInvalidateOnAnimation(this);
+        }
     }
 
     @Override
@@ -106,7 +134,6 @@ public class DragHelperView extends ViewGroup {
 
         }
 
-
     }
 
     @Override
@@ -125,7 +152,7 @@ public class DragHelperView extends ViewGroup {
             final LayoutParams lp = (LayoutParams) child.getLayoutParams();
 
             if (isContentView(child)) {
-                child.layout(lp.leftMargin, lp.topMargin, lp.leftMargin + lp.width, lp.topMargin + lp.height);
+                child.layout(lp.leftMargin, lp.topMargin, lp.leftMargin + child.getMeasuredWidth(), lp.topMargin + child.getMeasuredHeight());
             } else {
                 final int childWidth = child.getMeasuredWidth();
                 final int childHeight = child.getMeasuredHeight();
@@ -154,10 +181,45 @@ public class DragHelperView extends ViewGroup {
     }
 
     private class ViewDragCallback extends ViewDragHelper.Callback{
+        ViewDragHelper mDragger;
+
+        public void setDragger(ViewDragHelper dragger) {
+            this.mDragger = mDragger;
+        }
 
         @Override
         public boolean tryCaptureView(View child, int pointerId) {
+            if (isDragView(child)){
+                return true;
+            }
             return false;
+        }
+
+        @Override
+        public int getViewVerticalDragRange(View child) {
+            return isDragView(child) ? child.getHeight() : 0;
+        }
+
+        @Override
+        public int clampViewPositionVertical(View child, int top, int dy) {
+            return top;
+        }
+
+        @Override
+        public void onViewReleased(View releasedChild, float xvel, float yvel) {
+            super.onViewReleased(releasedChild, xvel, yvel);
+            Log.w("zy", "onViewReleased");
+        }
+
+        @Override
+        public void onEdgeDragStarted(int edgeFlags, int pointerId) {
+            mDragger.captureChildView(mDragView, pointerId);
+            Log.w("zy", "onEdgeDragStarted");
+        }
+
+        @Override
+        public void onEdgeTouched(int edgeFlags, int pointerId) {
+            Log.w("zy", "onEdgeTouched");
         }
     }
 
@@ -168,9 +230,9 @@ public class DragHelperView extends ViewGroup {
         public LayoutParams(Context c, AttributeSet attrs) {
             super(c, attrs);
 
-            TypedArray a = c.obtainStyledAttributes(attrs, new int[]{android.R.attr.layout_gravity});
+            TypedArray a = c.obtainStyledAttributes(attrs, R.styleable.DragHelperView_LayoutParams);
 
-            this.gravity = a.getInt(0, Gravity.NO_GRAVITY);
+            this.gravity = a.getInt(R.styleable.DragHelperView_LayoutParams_gravity, Gravity.NO_GRAVITY);
 
             a.recycle();
 
