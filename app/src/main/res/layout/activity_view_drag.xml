@@ -15,13 +15,22 @@
 
     </FrameLayout>
 
-    <TextView
+    <RelativeLayout
         android:id="@+id/dragger"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="#f00"
         app:gravity="bottom"
-        />
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dianji"
+            android:onClick="onClick"
+            />
+
+        </RelativeLayout>
 
 </com.simon.example.viewdemo.view.DragHelperView>
 

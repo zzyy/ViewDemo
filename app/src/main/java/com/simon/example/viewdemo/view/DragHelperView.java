@@ -202,6 +202,13 @@ public class DragHelperView extends ViewGroup {
 
         @Override
         public int clampViewPositionVertical(View child, int top, int dy) {
+            int maxTop = getHeight();
+            int minTop = getHeight() - child.getHeight();
+            if (top>maxTop){
+                return maxTop;
+            }else if (top < minTop){
+                return minTop;
+            }
             return top;
         }
 
@@ -209,6 +216,26 @@ public class DragHelperView extends ViewGroup {
         public void onViewReleased(View releasedChild, float xvel, float yvel) {
             super.onViewReleased(releasedChild, xvel, yvel);
             Log.w("zy", "onViewReleased");
+            int top = getHeight();
+            int releasedChildHeight = releasedChild.getHeight();
+
+            int midTop = getHeight() - (int)(releasedChildHeight/2);
+
+            if (yvel > 0 || releasedChild.getTop() >= midTop ){
+                top = getHeight();
+            }else {
+                top = getHeight() - releasedChildHeight;
+            }
+
+            mDragger.settleCapturedViewAt( releasedChild.getLeft(), top );
+
+            invalidate();
+        }
+
+        @Override
+        public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
+            super.onViewPositionChanged(changedView, left, top, dx, dy);
+
         }
 
         @Override
