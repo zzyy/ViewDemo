@@ -10,4 +10,12 @@ public class GankData<T> {
     boolean error;
 
     T results;
+
+    public boolean isError() {
+        return error;
+    }
+
+    public T getResults() {
+        return results;
+    }
 }

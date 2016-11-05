@@ -3,7 +3,7 @@ package com.zy.md.base.net;
 import android.support.annotation.StringDef;
 
 import com.zy.md.base.pojo.GankData;
-import com.zy.md.base.pojo.Results;
+import com.zy.md.base.pojo.GankItemData;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -29,7 +29,7 @@ public interface GankApi {
      * 第几页：数字，大于0
      */
     @GET("api/data/{type}/{pageSize}/{pageNo}")
-    Observable<GankData<List<Results>>> getMenu(@Path("type") @Type String type, @Path("pageSize") int pageSize, @Path("pageNo") int pageNo);
+    Observable<GankData<List<GankItemData>>> getMenu(@Path("type") @Type String type, @Path("pageSize") int pageSize, @Path("pageNo") int pageNo);
 
     String TYPE_MEZI = "福利";
     String TYPE_ANDROID = "Android";
