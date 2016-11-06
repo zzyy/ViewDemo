@@ -1,6 +1,7 @@
 package com.zy.md;
 
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -8,6 +9,7 @@ import com.orhanobut.logger.Logger;
 import com.zy.md.base.net.GankApi;
 import com.zy.md.base.net.NetRequest;
 import com.zy.md.base.view.BaseActivity;
+import com.zy.md.main.ui.BannerAdapter;
 import com.zy.md.main.ui.GankAdapter;
 
 import butterknife.BindView;
@@ -19,6 +21,9 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.rv_content)
     RecyclerView mRecyclerView;
     GankAdapter mRecyclerAdapter;
+
+    @BindView(R.id.vp_pic_show)
+    ViewPager mPicShowViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,17 @@ public class MainActivity extends BaseActivity {
     private int pageNo = 1;
 
     private void initView() {
+        BannerAdapter adapter = new BannerAdapter();
+        mPicShowViewPager.setAdapter(adapter);
+
+        NetRequest.getGankApi().getMenu(GankApi.TYPE_MEZI, 4, 1)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(listGankData -> {
+                    adapter.setData( listGankData.getResults() );
+                }, throwable -> {});
+
+
         mRecyclerAdapter = new GankAdapter();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mRecyclerAdapter.setLoadMoreListener(() -> {
