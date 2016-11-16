@@ -3,11 +3,15 @@ package com.zy.md;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.orhanobut.logger.Logger;
 import com.zy.md.base.net.GankApi;
 import com.zy.md.base.net.NetRequest;
 import com.zy.md.base.view.BaseActivity;
+import com.zy.md.main.TestActivity;
+import com.zy.md.main.ui.BaseRecyclerAdapter;
+import com.zy.md.main.ui.DividerItemDecorarion;
 import com.zy.md.main.ui.GankAdapter;
 
 import butterknife.BindView;
@@ -34,6 +38,16 @@ public class MainActivity extends BaseActivity {
     private void initView() {
         mRecyclerAdapter = new GankAdapter();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        mRecyclerView.addItemDecoration( new DividerItemDecorarion(20, 15, 20, 15));
+
+        mRecyclerAdapter.setItemClickListener(new BaseRecyclerAdapter.ItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Logger.d(position);
+                startActivity(TestActivity.class);
+            }
+        });
+
         mRecyclerAdapter.setLoadMoreListener(() -> {
             Logger.d("Load more");
 
