@@ -1,6 +1,7 @@
 package com.zy.md;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.orhanobut.logger.Logger;
 import com.zy.md.base.utils.ThreadInfoUtils;
@@ -14,6 +15,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        mContext = this;
         init();
     }
 
@@ -29,5 +31,10 @@ public class App extends Application {
     private void initLog() {
         Logger.init("zy")
                 .hideThreadInfo();
+    }
+
+    private static Context mContext;
+    public static Context getContext(){
+        return mContext;
     }
 }
