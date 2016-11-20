@@ -2,7 +2,15 @@ package com.zy.md.main.ui;
 
 import android.support.annotation.IdRes;
 import android.support.v7.widget.RecyclerView;
+import android.util.SparseArray;
+import android.util.SparseIntArray;
 import android.view.View;
+
+import com.zy.md.R;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * 为RecyclerView设置每个item的监听事件
@@ -13,11 +21,19 @@ import android.view.View;
  */
 
 public class ItemClickSupport {
-    private final static int DEFAULT_TAG_NAME = 123;
+    //要求设置tag的id 必须是资源文件的id  用来保证唯一..
+    private final static int DEFAULT_TAG_NAME = R.id.action_settings;
 
     private final RecyclerView mRecyclerView;
     private OnItemClickListener mOnItemClickListener;
     private OnItemLongClickListener mOnItemLongClickListener;
+
+    private View.OnClickListener mOnChildClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+        }
+    };
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -41,6 +57,20 @@ public class ItemClickSupport {
             = new RecyclerView.OnChildAttachStateChangeListener() {
         @Override
         public void onChildViewAttachedToWindow(View view) {
+            Set<Integer> keySet = mOnClickListenerMap.keySet();
+            for (Integer itemKey : keySet){
+                final View itemView = view.findViewById( itemKey );
+                if (itemView != null){
+                    itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            OnItemChildViewClickListener onItemChildViewClickListener = mOnClickListenerMap.get(itemKey);
+                            onItemChildViewClickListener.onItemChildViewClicked(mRecyclerView, mRecyclerView.getChildAdapterPosition(view) ,  itemView);
+                        }
+                    });
+                }
+            }
+
             if (mOnItemClickListener != null) {
                 view.setOnClickListener(mOnClickListener);
             }
@@ -77,13 +107,16 @@ public class ItemClickSupport {
         return support;
     }
 
+    private Map<Integer, OnItemChildViewClickListener> mOnClickListenerMap = new HashMap<>();
+
     /**
      * 为每个item中的子view设置点击事件
      * @param id
      * @param listener
      * @return
      */
-    public ItemClickSupport setChildOnClickListener(@IdRes int id, View.OnClickListener listener){
+    public ItemClickSupport setChildOnClickListener(@IdRes int id, OnItemChildViewClickListener listener){
+        mOnClickListenerMap.put(id, listener);
         return this;
     }
 
@@ -110,5 +143,9 @@ public class ItemClickSupport {
     public interface OnItemLongClickListener {
 
         boolean onItemLongClicked(RecyclerView recyclerView, int position, View v);
+    }
+
+    public interface OnItemChildViewClickListener{
+        void onItemChildViewClicked(RecyclerView recyclerView, int position, View v);
     }
 }

@@ -7,6 +7,9 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
+import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,6 +28,7 @@ import com.zy.md.base.view.BaseActivity;
 import com.zy.md.main.ui.BaseRecyclerAdapter;
 import com.zy.md.main.ui.BaseRecyclerHolder;
 import com.zy.md.main.ui.DividerItemDecorarion;
+import com.zy.md.main.ui.ItemClickSupport;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,6 +43,9 @@ public class TestActivity extends BaseActivity {
 
     @BindView(R.id.content_test)
     RecyclerView mRecyclerView;
+
+    @BindView(R.id.root_view)
+    CoordinatorLayout mRootView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,7 +129,7 @@ public class TestActivity extends BaseActivity {
         touchHelper.attachToRecyclerView( mRecyclerView );
 
 
-        mRecyclerView.addOnChildAttachStateChangeListener(new RecyclerView.OnChildAttachStateChangeListener() {
+        /*mRecyclerView.addOnChildAttachStateChangeListener(new RecyclerView.OnChildAttachStateChangeListener() {
             @Override
             public void onChildViewAttachedToWindow(View view) {
                 final int position = mRecyclerView.getChildAdapterPosition( view );
@@ -136,6 +143,27 @@ public class TestActivity extends BaseActivity {
             public void onChildViewDetachedFromWindow(View view) {
 
             }
+        });*/
+
+        View bottomSheet = findViewById(R.id.bottom_sheet);
+        final BottomSheetBehavior<View> behavior = BottomSheetBehavior.from(bottomSheet);
+        behavior.setHideable(true);
+        behavior.setPeekHeight( 300 );
+
+
+        ItemClickSupport.addTo( mRecyclerView ).setOnItemClickListener((recyclerView, position, v) -> {
+            if (position < 10){
+                behavior.setState( BottomSheetBehavior.STATE_EXPANDED );
+            }else {
+                behavior.setState( BottomSheetBehavior.STATE_HIDDEN );
+
+            }
+
+            T.getInstance(this).s("item click: " + position);
+        }).setChildOnClickListener(R.id.iv_favorite, (recyclerView, position, v) -> {
+            T.getInstance(this).s("child click: position=" + position);
+            Snackbar.make(mRootView, "child click: position=" + position, Snackbar.LENGTH_SHORT).show();
+
         });
     }
 
