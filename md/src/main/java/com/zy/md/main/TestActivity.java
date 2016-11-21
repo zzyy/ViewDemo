@@ -152,6 +152,11 @@ public class TestActivity extends BaseActivity {
 
 
         ItemClickSupport.addTo( mRecyclerView ).setOnItemClickListener((recyclerView, position, v) -> {
+            if (position ==0){
+                new TestBottomSheetDialog(this).show();
+
+                return;
+            }
             if (position < 10){
                 behavior.setState( BottomSheetBehavior.STATE_EXPANDED );
             }else {
