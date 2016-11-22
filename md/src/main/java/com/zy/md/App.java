@@ -4,6 +4,9 @@ import android.app.Application;
 import android.content.Context;
 
 import com.orhanobut.logger.Logger;
+import com.zy.md.base.dagger.AppComponent;
+import com.zy.md.base.dagger.AppModule;
+import com.zy.md.base.dagger.DaggerAppComponent;
 import com.zy.md.base.utils.ThreadInfoUtils;
 
 /**
@@ -11,21 +14,29 @@ import com.zy.md.base.utils.ThreadInfoUtils;
  */
 
 public class App extends Application {
+    private static App sContext;
+
+    private AppComponent mAppComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        mContext = this;
+        sContext = this;
         init();
     }
 
     private void init() {
         initLog();
 
-        Logger.i(ThreadInfoUtils.getProcessName(this));
         if (ThreadInfoUtils.getProcessName(this).equals(getPackageName())) {
-
+            initAppComponent();
         }
+    }
+
+    private void initAppComponent() {
+        mAppComponent = DaggerAppComponent.builder()
+                .appModule(new AppModule(this))
+                .build();
     }
 
     private void initLog() {
@@ -33,8 +44,12 @@ public class App extends Application {
                 .hideThreadInfo();
     }
 
-    private static Context mContext;
-    public static Context getContext(){
-        return mContext;
+
+    public AppComponent getAppComponent() {
+        return mAppComponent;
+    }
+
+    public static App getContext() {
+        return sContext;
     }
 }

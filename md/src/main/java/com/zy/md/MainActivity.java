@@ -15,6 +15,9 @@ import com.zy.md.main.ui.BaseRecyclerAdapter;
 import com.zy.md.main.ui.DividerItemDecorarion;
 import com.zy.md.main.ui.BannerAdapter;
 import com.zy.md.main.ui.GankAdapter;
+import com.zy.md.ui.component.DaggerMainActivityComponent;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import rx.android.schedulers.AndroidSchedulers;
@@ -29,13 +32,26 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.vp_pic_show)
     ViewPager mPicShowViewPager;
 
+    @Inject
+    GankApi mGankApi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setupActivityComponent();
+
         initView();
 
+    }
+
+
+    void setupActivityComponent(){
+        DaggerMainActivityComponent.builder()
+                .appComponent( App.getContext().getAppComponent() )
+                .build()
+                .inject( this );
     }
 
     private int pageNo = 1;
@@ -44,7 +60,7 @@ public class MainActivity extends BaseActivity {
         BannerAdapter adapter = new BannerAdapter();
         mPicShowViewPager.setAdapter(adapter);
 
-        NetRequest.getGankApi().getMenu(GankApi.TYPE_MEZI, 4, 1)
+        mGankApi.getMenu(GankApi.TYPE_MEZI, 4, 1)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(listGankData -> {
@@ -60,14 +76,14 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onItemClick(View view, int position) {
                 Logger.d(position);
-                startActivity(TestActivity.class);
+                start(TestActivity.class);
             }
         });
 
         mRecyclerAdapter.setLoadMoreListener(() -> {
             Logger.d("Load more");
 
-            NetRequest.getGankApi().getMenu(GankApi.TYPE_ANDROID, 15, pageNo)
+            mGankApi.getMenu(GankApi.TYPE_ANDROID, 15, pageNo)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(gankData -> {
@@ -83,7 +99,7 @@ public class MainActivity extends BaseActivity {
         mRecyclerView.setAdapter(mRecyclerAdapter);
 
 
-        NetRequest.getGankApi().getMenu(GankApi.TYPE_ANDROID, 15, pageNo)
+        mGankApi.getMenu(GankApi.TYPE_ANDROID, 15, pageNo)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(gankData -> {

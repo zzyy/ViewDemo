@@ -25,7 +25,7 @@ public class BaseActivity extends AppCompatActivity {
         return (T) findViewById(id);
     }
 
-    protected void startActivity(Class clazz) {
+    protected void start(Class clazz) {
         Intent intent = new Intent(this, clazz);
         startActivity(intent);
     }

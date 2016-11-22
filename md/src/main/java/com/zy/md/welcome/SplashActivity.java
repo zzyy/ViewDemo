@@ -2,7 +2,6 @@ package com.zy.md.welcome;
 
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.zy.md.MainActivity;
@@ -50,9 +49,9 @@ public class SplashActivity extends BaseActivity {
     private void goOtherActivity(){
         boolean isFirst = SharedPreferenceUtils.with(this).get(IS_FIRST_ENTER_APP, true);
         if (isFirst){
-            startActivity( WelcomeActivity.class );
+            start( WelcomeActivity.class );
         }else {
-            startActivity(MainActivity.class);
+            start(MainActivity.class);
         }
     }
 

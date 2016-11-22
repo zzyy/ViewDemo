@@ -13,7 +13,7 @@ import android.view.MotionEvent;
 
 public class BannerViewPager extends ViewPager {
     private final int MSG_NEXT_PAGE = 0;
-    private final int STAY_TIME = 2 * 1000;
+    private final int STAY_TIME = 5 * 1000;
     Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {

@@ -11,22 +11,33 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
         android:orientation="vertical">
 
-        <com.zy.md.main.ui.BannerViewPager
-            android:id="@+id/vp_pic_show"
+        <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="160dp"
-            app:layout_scrollFlags="scroll"
-            />
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            >
+
+
+            <com.zy.md.main.ui.BannerViewPager
+                android:id="@+id/vp_pic_show"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:fitsSystemWindows="true"
+                />
+        </android.support.design.widget.CollapsingToolbarLayout>
+
     </android.support.design.widget.AppBarLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
 
 
 </android.support.design.widget.CoordinatorLayout>
