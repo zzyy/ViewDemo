@@ -1,4 +1,4 @@
-package com.zy.md.main.ui;
+package com.zy.md.base.view.recycleview;
 
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.widget.RecyclerView;

@@ -1,4 +1,4 @@
-package com.zy.md.base.utils;
+package com.zy.md.utils.common;
 
 import android.app.ActivityManager;
 import android.content.Context;

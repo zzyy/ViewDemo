@@ -1,9 +1,9 @@
-package com.zy.md.base.net;
+package com.zy.md.data.net;
 
 import android.support.annotation.StringDef;
 
-import com.zy.md.base.pojo.GankData;
-import com.zy.md.base.pojo.GankItemData;
+import com.zy.md.data.pojo.GankData;
+import com.zy.md.data.pojo.GankItemData;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -18,7 +18,7 @@ import rx.Observable;
  */
 
 public interface GankApi {
-    final String BASE_URL = "http://gank.io/";
+    public final String BASE_URL = "http://gank.io/";
 
 
     /**

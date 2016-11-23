@@ -1,4 +1,4 @@
-package com.zy.md.base.utils;
+package com.zy.md.utils.common;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,16 +8,16 @@ import com.orhanobut.logger.Logger;
 /**
  * Created by Simon on 2016/9/29.
  */
-public class SharedPreferenceUtils {
+public class PreferenceUtils {
     private static final String TAG = "BfcCommon_SPUtils";
     public static final String DEFAULT_PREFERENCES_FILE_NAME = "bfc_share_preference";
     private final SharedPreferences mPreferences;
 
-    private SharedPreferenceUtils(Context ctx, String filePath, int mode) {
+    private PreferenceUtils(Context ctx, String filePath, int mode) {
         mPreferences = ctx.getApplicationContext().getSharedPreferences(filePath, mode);
     }
 
-    private static SharedPreferenceUtils sInstance;
+    private static PreferenceUtils sInstance;
 
     public SharedPreferences getPreferences() {
         return mPreferences;
@@ -28,11 +28,11 @@ public class SharedPreferenceUtils {
      *
      * @return 返回单例对象
      */
-    public static SharedPreferenceUtils with(Context ctx) {
+    public static PreferenceUtils with(Context ctx) {
         if (sInstance == null) {
-            synchronized (SharedPreferenceUtils.class) {
+            synchronized (PreferenceUtils.class) {
                 if (sInstance == null) {
-                    sInstance = new SharedPreferenceUtils(ctx, DEFAULT_PREFERENCES_FILE_NAME, Context.MODE_PRIVATE);
+                    sInstance = new PreferenceUtils(ctx, DEFAULT_PREFERENCES_FILE_NAME, Context.MODE_PRIVATE);
                 }
             }
         }
@@ -45,8 +45,8 @@ public class SharedPreferenceUtils {
      *
      * @param fileName sharePreference文件名
      */
-    public static SharedPreferenceUtils with(Context ctx, String fileName) {
-        return new SharedPreferenceUtils(ctx, fileName, Context.MODE_PRIVATE);
+    public static PreferenceUtils with(Context ctx, String fileName) {
+        return new PreferenceUtils(ctx, fileName, Context.MODE_PRIVATE);
     }
 
     /**
@@ -55,8 +55,8 @@ public class SharedPreferenceUtils {
      * @param fileName sharePreference文件名
      * @param mode     保存文件的模式, {@link Context#MODE_PRIVATE }, @{@link Context#MODE_APPEND}, @{@link Context#MODE_WORLD_READABLE }, @{@link Context#MODE_WORLD_WRITEABLE }
      */
-    protected static SharedPreferenceUtils with(Context ctx, String fileName, int mode) {
-        return new SharedPreferenceUtils(ctx, fileName, mode);
+    protected static PreferenceUtils with(Context ctx, String fileName, int mode) {
+        return new PreferenceUtils(ctx, fileName, mode);
     }
 
 

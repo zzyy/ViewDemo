@@ -1,4 +1,4 @@
-package com.zy.md.main.ui;
+package com.zy.md.base.view.dialog;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,8 +16,8 @@ import com.zy.md.R;
  * Created by Simon on 2016/11/21.
  */
 
-public class SheetDialog extends BottomSheetDialog {
-    public SheetDialog(@NonNull Context context) {
+public class BaseBottomSheetDialog extends BottomSheetDialog {
+    public BaseBottomSheetDialog(@NonNull Context context) {
         super(context);
     }
 

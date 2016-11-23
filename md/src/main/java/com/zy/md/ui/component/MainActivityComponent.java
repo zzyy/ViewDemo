@@ -2,7 +2,7 @@ package com.zy.md.ui.component;
 
 import com.zy.md.MainActivity;
 import com.zy.md.base.dagger.ActivityScope;
-import com.zy.md.base.dagger.AppComponent;
+import com.zy.md.base.AppComponent;
 
 import dagger.Component;
 

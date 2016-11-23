@@ -1,9 +1,7 @@
-package com.zy.md.main.ui;
+package com.zy.md.base.view.recycleview;
 
 import android.support.annotation.IdRes;
 import android.support.v7.widget.RecyclerView;
-import android.util.SparseArray;
-import android.util.SparseIntArray;
 import android.view.View;
 
 import com.zy.md.R;

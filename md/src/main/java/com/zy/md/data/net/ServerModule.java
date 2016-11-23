@@ -1,6 +1,6 @@
-package com.zy.md.base.dagger;
+package com.zy.md.data.net;
 
-import com.zy.md.base.net.GankApi;
+import com.zy.md.data.net.GankApi;
 
 import javax.inject.Singleton;
 

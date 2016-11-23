@@ -7,12 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.orhanobut.logger.Logger;
-import com.zy.md.base.net.GankApi;
-import com.zy.md.base.net.NetRequest;
+import com.zy.md.base.App;
+import com.zy.md.data.net.GankApi;
 import com.zy.md.base.view.BaseActivity;
 import com.zy.md.main.TestActivity;
-import com.zy.md.main.ui.BaseRecyclerAdapter;
-import com.zy.md.main.ui.DividerItemDecorarion;
+import com.zy.md.base.view.recycleview.BaseRecyclerAdapter;
+import com.zy.md.base.view.recycleview.DividerItemDecorarion;
 import com.zy.md.main.ui.BannerAdapter;
 import com.zy.md.main.ui.GankAdapter;
 import com.zy.md.ui.component.DaggerMainActivityComponent;

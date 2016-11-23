@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.zy.md.MainActivity;
 import com.zy.md.R;
-import com.zy.md.base.utils.SharedPreferenceUtils;
+import com.zy.md.utils.common.PreferenceUtils;
 import com.zy.md.base.view.BaseActivity;
 
 public class SplashActivity extends BaseActivity {
@@ -47,7 +47,7 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void goOtherActivity(){
-        boolean isFirst = SharedPreferenceUtils.with(this).get(IS_FIRST_ENTER_APP, true);
+        boolean isFirst = PreferenceUtils.with(this).get(IS_FIRST_ENTER_APP, true);
         if (isFirst){
             start( WelcomeActivity.class );
         }else {

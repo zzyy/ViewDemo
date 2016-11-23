@@ -1,6 +1,4 @@
-package com.zy.md.base.pojo;
-
-import java.util.List;
+package com.zy.md.data.pojo;
 
 /**
  * Created by Simon on 2016/11/3.

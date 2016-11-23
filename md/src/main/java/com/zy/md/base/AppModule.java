@@ -1,4 +1,4 @@
-package com.zy.md.base.dagger;
+package com.zy.md.base;
 
 import android.app.Application;
 

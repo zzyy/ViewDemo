@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.VideoView;
 
 import com.zy.md.R;
-import com.zy.md.base.utils.SharedPreferenceUtils;
+import com.zy.md.utils.common.PreferenceUtils;
 import com.zy.md.base.view.BaseActivity;
 
 import butterknife.BindView;
@@ -20,7 +20,7 @@ public class WelcomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        SharedPreferenceUtils.with(this).put( SplashActivity.IS_FIRST_ENTER_APP, false );
+        PreferenceUtils.with(this).put( SplashActivity.IS_FIRST_ENTER_APP, false );
 
         mVideoPlayerView.setVideoURI( getVideoUri() );
 

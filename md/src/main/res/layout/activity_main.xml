@@ -22,7 +22,7 @@
             >
 
 
-            <com.zy.md.main.ui.BannerViewPager
+            <com.zy.md.base.view.cycler_viewpager.BannerViewPager
                 android:id="@+id/vp_pic_show"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"

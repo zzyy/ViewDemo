@@ -7,9 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
-import com.zy.md.App;
+import com.zy.md.base.App;
 import com.zy.md.R;
-import com.zy.md.base.pojo.GankItemData;
+import com.zy.md.data.pojo.GankItemData;
 
 import java.util.ArrayList;
 import java.util.List;

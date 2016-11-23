@@ -1,4 +1,4 @@
-package com.zy.md.base.pojo;
+package com.zy.md.data.pojo;
 
 import java.util.List;
 

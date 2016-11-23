@@ -1,10 +1,11 @@
 package com.zy.md.main.ui;
 
-import android.support.annotation.LayoutRes;
 import android.widget.TextView;
 
 import com.zy.md.R;
-import com.zy.md.base.pojo.GankItemData;
+import com.zy.md.data.pojo.GankItemData;
+import com.zy.md.base.view.recycleview.BaseRecyclerAdapter;
+import com.zy.md.base.view.recycleview.BaseRecyclerHolder;
 
 import java.util.List;
 

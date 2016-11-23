@@ -2,33 +2,25 @@ package com.zy.md.main;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RectShape;
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.zy.md.R;
-import com.zy.md.base.utils.T;
+import com.zy.md.utils.common.ToastUtils;
 import com.zy.md.base.view.BaseActivity;
-import com.zy.md.main.ui.BaseRecyclerAdapter;
-import com.zy.md.main.ui.BaseRecyclerHolder;
-import com.zy.md.main.ui.DividerItemDecorarion;
-import com.zy.md.main.ui.ItemClickSupport;
+import com.zy.md.base.view.recycleview.BaseRecyclerAdapter;
+import com.zy.md.base.view.recycleview.BaseRecyclerHolder;
+import com.zy.md.base.view.recycleview.DividerItemDecorarion;
+import com.zy.md.base.view.recycleview.ItemClickSupport;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -135,7 +127,7 @@ public class TestActivity extends BaseActivity {
                 final int position = mRecyclerView.getChildAdapterPosition( view );
 
                 view.findViewById(R.id.iv_favorite).setOnClickListener( v -> {
-                    T.getInstance( TestActivity.this ).s("position:" + position);
+                    ToastUtils.getInstance( TestActivity.this ).s("position:" + position);
                 });
             }
 
@@ -164,9 +156,9 @@ public class TestActivity extends BaseActivity {
 
             }
 
-            T.getInstance(this).s("item click: " + position);
+            ToastUtils.getInstance(this).s("item click: " + position);
         }).setChildOnClickListener(R.id.iv_favorite, (recyclerView, position, v) -> {
-            T.getInstance(this).s("child click: position=" + position);
+            ToastUtils.getInstance(this).s("child click: position=" + position);
             Snackbar.make(mRootView, "child click: position=" + position, Snackbar.LENGTH_SHORT).show();
 
         });

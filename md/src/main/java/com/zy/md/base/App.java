@@ -1,13 +1,10 @@
-package com.zy.md;
+package com.zy.md.base;
 
 import android.app.Application;
-import android.content.Context;
 
 import com.orhanobut.logger.Logger;
-import com.zy.md.base.dagger.AppComponent;
-import com.zy.md.base.dagger.AppModule;
 import com.zy.md.base.dagger.DaggerAppComponent;
-import com.zy.md.base.utils.ThreadInfoUtils;
+import com.zy.md.utils.common.ThreadInfoUtils;
 
 /**
  * Created by Simon on 2016/11/2.

@@ -1,4 +1,4 @@
-package com.zy.md.main.ui;
+package com.zy.md.base.view.cycler_viewpager;
 
 import android.content.Context;
 import android.os.Handler;

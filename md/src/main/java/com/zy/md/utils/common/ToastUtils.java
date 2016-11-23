@@ -1,4 +1,4 @@
-package com.zy.md.base.utils;
+package com.zy.md.utils.common;
 
 import android.content.Context;
 import android.support.annotation.StringRes;
@@ -7,21 +7,21 @@ import android.widget.Toast;
 /**
  * Created by Simon on 2016/9/29.
  */
-public class T {
+public class ToastUtils {
 
-    private static T sInstance;
+    private static ToastUtils sInstance;
     private Context mContext;
     private Toast mToast;
 
-    private T(Context context) {
+    private ToastUtils(Context context) {
         mContext = context.getApplicationContext();
     }
 
-    public static T getInstance(Context context) {
+    public static ToastUtils getInstance(Context context) {
         if (sInstance == null) {
-            synchronized (T.class) {
+            synchronized (ToastUtils.class) {
                 if (sInstance == null) {
-                    sInstance = new T(context);
+                    sInstance = new ToastUtils(context);
                 }
             }
         }
