@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_android"
+        android:icon="@drawable/ic_android_white_24dp"
+        android:title="Android"
+        />
+
+    <item
+        android:id="@+id/action_gank_meizi"
+        android:icon="@drawable/ic_picture_in_picture_white_24dp"
+        android:title="Mei"
+        />
+
+    <item
+        android:id="@+id/action_3"
+        android:icon="@drawable/ic_settings_system_daydream_white_24dp"
+        android:title="setting"
+        />
+
+</menu>

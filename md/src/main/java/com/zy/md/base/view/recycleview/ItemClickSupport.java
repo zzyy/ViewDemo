@@ -20,7 +20,7 @@ import java.util.Set;
 
 public class ItemClickSupport {
     //要求设置tag的id 必须是资源文件的id  用来保证唯一..
-    private final static int DEFAULT_TAG_NAME = R.id.action_settings;
+    private final static int DEFAULT_TAG_NAME = R.id.activity_main;
 
     private final RecyclerView mRecyclerView;
     private OnItemClickListener mOnItemClickListener;

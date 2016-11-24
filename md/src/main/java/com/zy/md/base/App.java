@@ -3,7 +3,6 @@ package com.zy.md.base;
 import android.app.Application;
 
 import com.orhanobut.logger.Logger;
-import com.zy.md.base.dagger.DaggerAppComponent;
 import com.zy.md.utils.common.ThreadInfoUtils;
 
 /**

@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.zy.md.data.net.GankApi;
 import com.zy.md.data.net.ServerModule;
+import com.zy.md.ui.di.GanMeiziModule;
+import com.zy.md.ui.di.GankMeiziFragmentComponent;
 
 import javax.inject.Singleton;
 
@@ -19,4 +21,6 @@ public interface AppComponent {
     Application getApplication();
 
     GankApi getGankApi();
+
+    GankMeiziFragmentComponent plus(GanMeiziModule module);
 }
