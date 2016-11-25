@@ -1,9 +1,11 @@
 package com.zy.md.ui.adaper;
 
 import android.graphics.Bitmap;
+import android.util.SparseIntArray;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 import com.zy.md.R;
 import com.zy.md.base.App;
@@ -20,6 +22,9 @@ public class GankPicturesAdapter extends BaseRecyclerAdapter<GankItemData> {
         super(null, R.layout.item_gank_pic);
     }
 
+
+    SparseIntArray imageHeightRecord = new SparseIntArray();
+
     @Override
     public void onBindViewHolder(BaseRecyclerHolder holder, int position, GankItemData itemData) {
         ImageView imageView = holder.getView(R.id.iv_picture);
@@ -31,6 +36,13 @@ public class GankPicturesAdapter extends BaseRecyclerAdapter<GankItemData> {
                 .noFade()
                 .into(imageView);
 
+//        Glide.with(App.getContext()).load("")
+
         desTextView.setText( itemData.getDesc() );
+    }
+
+    @Override
+    public void onViewAttachedToWindow(BaseRecyclerHolder holder) {
+        super.onViewAttachedToWindow(holder);
     }
 }

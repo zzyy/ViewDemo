@@ -32,8 +32,6 @@ public class GankMeiziFragment extends BaseFragment {
 
     GankPicturesAdapter mAdapter;
 
-    RecyclerView.LayoutManager mLayoutManager;
-
 
 
     public GankMeiziFragment() {
@@ -64,7 +62,8 @@ public class GankMeiziFragment extends BaseFragment {
 
     private void setupView() {
         mAdapter = new GankPicturesAdapter();
-        mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        StaggeredGridLayoutManager mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        mLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
 
         mContentRecyclerView.setLayoutManager( mLayoutManager);
         mContentRecyclerView.setAdapter(mAdapter);
