@@ -54,6 +54,10 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
         hideLoadingMoreView();
     }
 
+    public T getItem(int position){
+        return mData.get(position);
+    }
+
     @Override
     public int getItemViewType(int position) {
         final int lastDataPosition = mData.size() - 1;

@@ -3,11 +3,10 @@ package com.zy.md.ui.presenter;
 import android.support.annotation.IntRange;
 
 import com.orhanobut.logger.Logger;
-import com.zy.md.data.net.GankApi;
+import com.zy.md.data.model.GankMeiziFragmentModel;
 import com.zy.md.ui.fragment.GankMeiziFragment;
 
 import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by Simon on 2016/11/24.
@@ -16,18 +15,27 @@ import rx.schedulers.Schedulers;
 public class GankMeiziFragmentPresenter {
     private static final int PAGE_SIZE = 20;
 
-    GankApi mGankApi;
+    GankMeiziFragmentModel mGankMeiziModel;
 
     GankMeiziFragment mGankMeiziFragment;
 
-    public GankMeiziFragmentPresenter(GankMeiziFragment gankMeiziFragment, GankApi gankApi) {
+
+    public GankMeiziFragmentPresenter(GankMeiziFragment gankMeiziFragment, GankMeiziFragmentModel gankMeiziModel) {
         mGankMeiziFragment = gankMeiziFragment;
-        mGankApi = gankApi;
+        mGankMeiziModel = gankMeiziModel;
     }
 
-
     public void loadData(@IntRange(from = 1) int pageNo) {
-        mGankApi.getMenu(GankApi.TYPE_MEZI, PAGE_SIZE, pageNo)
+
+        mGankMeiziModel.loadNetData(pageNo)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(listGankData -> {
+                            mGankMeiziFragment.showData(listGankData.getResults());
+                        },
+                        throwable -> Logger.e(throwable, "加载出错"));
+
+
+        /*mGankApi.getMenu(GankApi.TYPE_MEZI, PAGE_SIZE, pageNo)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(listGankData -> {
@@ -36,7 +44,7 @@ public class GankMeiziFragmentPresenter {
                 },
                         throwable -> {
                             Logger.e(throwable, "加载出错");})
-        ;
+        ;*/
     }
 
 }

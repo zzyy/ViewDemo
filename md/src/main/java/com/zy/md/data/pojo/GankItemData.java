@@ -1,5 +1,7 @@
 package com.zy.md.data.pojo;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -7,6 +9,7 @@ import java.util.List;
  */
 
 public class GankItemData {
+    @SerializedName("_id")
     String id;
 
     String createdAt;
@@ -26,6 +29,10 @@ public class GankItemData {
     boolean used;
 
     String who;
+
+    //图片的宽高
+    public int width;
+    public int height;
 
     public String getCreatedAt() {
         return createdAt;

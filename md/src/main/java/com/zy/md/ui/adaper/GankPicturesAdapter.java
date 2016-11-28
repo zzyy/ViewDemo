@@ -6,12 +6,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.request.target.SizeReadyCallback;
+import com.bumptech.glide.request.target.Target;
 import com.zy.md.R;
 import com.zy.md.base.App;
 import com.zy.md.base.view.recycleview.BaseRecyclerAdapter;
 import com.zy.md.base.view.recycleview.BaseRecyclerHolder;
+import com.zy.md.base.view.widget.RatioImageView;
 import com.zy.md.data.pojo.GankItemData;
+
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Simon on 2016/11/24.
@@ -20,6 +24,7 @@ import com.zy.md.data.pojo.GankItemData;
 public class GankPicturesAdapter extends BaseRecyclerAdapter<GankItemData> {
     public GankPicturesAdapter() {
         super(null, R.layout.item_gank_pic);
+        this.setHasStableIds(true);
     }
 
 
@@ -27,18 +32,24 @@ public class GankPicturesAdapter extends BaseRecyclerAdapter<GankItemData> {
 
     @Override
     public void onBindViewHolder(BaseRecyclerHolder holder, int position, GankItemData itemData) {
-        ImageView imageView = holder.getView(R.id.iv_picture);
+        RatioImageView imageView = holder.getView(R.id.iv_picture);
         TextView desTextView = holder.getView(R.id.tv_description);
 
-        Picasso.with(App.getContext())
-                .load( itemData.getUrl() )
-                .config(Bitmap.Config.RGB_565)
-                .noFade()
+
+        imageView.setOriginalSize( itemData.width, itemData.height );
+
+        Glide.with(App.getContext())
+                .load(itemData.getUrl())
                 .into(imageView);
 
-//        Glide.with(App.getContext()).load("")
 
-        desTextView.setText( itemData.getDesc() );
+
+        desTextView.setText(itemData.getDesc());
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return getItem(position).getId().hashCode();
     }
 
     @Override
