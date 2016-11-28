@@ -6,6 +6,7 @@ import com.orhanobut.logger.Logger;
 import com.zy.md.data.model.GankMeiziFragmentModel;
 import com.zy.md.ui.fragment.GankMeiziFragment;
 
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 
 /**
@@ -27,12 +28,13 @@ public class GankMeiziFragmentPresenter {
 
     public void loadData(@IntRange(from = 1) int pageNo) {
 
-        mGankMeiziModel.loadNetData(pageNo)
+        Subscription subscription = mGankMeiziModel.loadFromNet(pageNo)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(listGankData -> {
                             mGankMeiziFragment.showData(listGankData.getResults());
                         },
                         throwable -> Logger.e(throwable, "加载出错"));
+
 
 
         /*mGankApi.getMenu(GankApi.TYPE_MEZI, PAGE_SIZE, pageNo)
@@ -46,5 +48,6 @@ public class GankMeiziFragmentPresenter {
                             Logger.e(throwable, "加载出错");})
         ;*/
     }
+
 
 }

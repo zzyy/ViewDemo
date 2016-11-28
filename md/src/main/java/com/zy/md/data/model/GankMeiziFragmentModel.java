@@ -35,7 +35,7 @@ public class GankMeiziFragmentModel {
         mGankApi = gankApi;
     }
 
-    public Observable<GankData<List<GankItemData>>> loadNetData(@IntRange(from = 1) int pageNo) {
+    public Observable<GankData<List<GankItemData>>> loadFromNet(@IntRange(from = 1) int pageNo) {
         return mGankApi.getMenu(GankApi.TYPE_MEZI, PAGE_SIZE, pageNo)
                 .subscribeOn(Schedulers.io())
                 .doOnNext(listGankData -> {
@@ -57,6 +57,10 @@ public class GankMeiziFragmentModel {
                 });
     }
 
+
+    public void loadFromDb(){
+
+    }
 
     private void saveToDb() {
 

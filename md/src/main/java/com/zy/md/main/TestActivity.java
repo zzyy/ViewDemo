@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 import com.zy.md.R;
 import com.zy.md.utils.common.ToastUtils;
 import com.zy.md.base.view.BaseActivity;
@@ -54,8 +54,12 @@ public class TestActivity extends BaseActivity {
 
 
     void initView() {
-        Picasso.with(this).load("http://ww3.sinaimg.cn/large/610dc034gw1f9shm1cajkj20u00jy408.jpg")
-                .into( mHeadImageView );
+//        Picasso.with(this).load("http://ww3.sinaimg.cn/large/610dc034gw1f9shm1cajkj20u00jy408.jpg")
+//                .into( mHeadImageView );
+
+        Glide.with(this)
+                .load("http://ww3.sinaimg.cn/large/610dc034gw1f9shm1cajkj20u00jy408.jpg")
+                .into(mHeadImageView);
 
 
         RecycleViewAdapter adapter = new RecycleViewAdapter();

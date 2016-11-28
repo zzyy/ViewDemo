@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 import com.zy.md.base.App;
 import com.zy.md.R;
 import com.zy.md.data.pojo.GankItemData;
@@ -52,7 +52,11 @@ public class BannerAdapter extends PagerAdapter {
 
         ImageView imageView = (ImageView) rootView.findViewById(R.id.iv_banner_pic);
 
-        Picasso.with(App.getContext()).load(mData.get(position).getUrl()).into(imageView);
+//        Picasso.with(App.getContext()).load(mData.get(position).getUrl()).into(imageView);
+
+        Glide.with(container.getContext())
+                .load(mData.get(position).getUrl())
+                .into(imageView);
 
         container.addView(rootView, 0);
         return rootView;
