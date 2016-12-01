@@ -50,4 +50,11 @@ public class ServerModule {
         return retrofit.create( GankApi.class );
     }
 
+
+    @Singleton
+    @Provides
+    public DouBanGirlApi provideDouBanGirlApi(Retrofit retrofit){
+        return retrofit.create( DouBanGirlApi.class );
+    }
+
 }

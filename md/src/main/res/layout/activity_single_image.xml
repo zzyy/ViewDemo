@@ -8,7 +8,7 @@
     android:background="#000"
     >
 
-    <ImageView
+    <com.zy.md.base.view.widget.TouchImageView
         android:id="@+id/iv_single_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
