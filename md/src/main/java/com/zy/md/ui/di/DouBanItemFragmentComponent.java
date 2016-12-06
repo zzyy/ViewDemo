@@ -12,7 +12,8 @@ import dagger.Component;
 
 
 @FragmentScope
-@Component(dependencies = AppComponent.class)
+@Component(dependencies = AppComponent.class,
+modules = DouBanItemModule.class)
 public interface DouBanItemFragmentComponent {
 
     void inject(DouBanItemFragment fragment);

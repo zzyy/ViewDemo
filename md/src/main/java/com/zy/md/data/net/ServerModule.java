@@ -32,28 +32,29 @@ public class ServerModule {
     }
 
 
+
     @Singleton
     @Provides
-    public Retrofit provideGankRetrofit(OkHttpClient okHttpClient){
+    public GankApi provideGankApi( OkHttpClient okHttpClient ){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl( GankApi.BASE_URL )
                 .callFactory( okHttpClient )
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
-        return retrofit;
-    }
-
-    @Singleton
-    @Provides
-    public GankApi provideGankApi( Retrofit retrofit ){
         return retrofit.create( GankApi.class );
     }
 
 
     @Singleton
     @Provides
-    public DouBanGirlApi provideDouBanGirlApi(Retrofit retrofit){
+    public DouBanGirlApi provideDouBanGirlApi(OkHttpClient okHttpClient){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl( DouBanGirlApi.BASE_URL )
+                .callFactory( okHttpClient )
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
         return retrofit.create( DouBanGirlApi.class );
     }
 

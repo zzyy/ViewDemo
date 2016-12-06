@@ -95,7 +95,7 @@ public class GankMeiziFragment extends BaseFragment {
         mPresenter.loadData(1);
     }
 
-    protected void setupComponent() {
+    protected void getPresenter() {
         App.getContext().getAppComponent()
                 .plus(new GanMeiziModule(this))
                 .inject(this);

@@ -37,7 +37,7 @@ public class App extends Application {
 
     private void initLog() {
         Logger.init("zy")
-                .hideThreadInfo();
+                .isShowThreadInfo();
     }
 
 

@@ -2,9 +2,13 @@ package com.zy.md.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 
 import com.zy.md.R;
+import com.zy.md.base.App;
 import com.zy.md.base.view.BaseFragment;
+import com.zy.md.ui.di.DaggerDouBanItemFragmentComponent;
+import com.zy.md.ui.di.DouBanItemModule;
 import com.zy.md.ui.presenter.DouBanItemPresenter;
 
 import javax.inject.Inject;
@@ -24,15 +28,19 @@ public class DouBanItemFragment extends BaseFragment {
     DouBanItemPresenter mPresenter;
 
     @Override
-    protected void setupComponent() {
-        super.setupComponent();
+    protected void getPresenter() {
+        DaggerDouBanItemFragmentComponent.builder()
+                .appComponent(App.getContext().getAppComponent())
+                .douBanItemModule( new DouBanItemModule(this))
+                .build()
+                .inject(this);
     }
 
-    public static DouBanItemFragment newInstance(int id, int title){
+    public static DouBanItemFragment newInstance(int id, String title){
         DouBanItemFragment fragment = new DouBanItemFragment();
         Bundle args = new Bundle();
         args.putInt( ARGS_ID, id );
-        args.putInt( ARGS_TITLE, title );
+        args.putString( ARGS_TITLE, title );
         fragment.setArguments(args);
         return fragment;
     }
@@ -50,6 +58,10 @@ public class DouBanItemFragment extends BaseFragment {
         return R.layout.fragment_douban_item;
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-
+        mPresenter.loadData();
+    }
 }

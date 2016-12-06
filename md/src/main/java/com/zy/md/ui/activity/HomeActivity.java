@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.zy.md.R;
 import com.zy.md.base.view.BaseActivity;
+import com.zy.md.ui.fragment.DouBanFragment;
 import com.zy.md.ui.fragment.GankFragment;
 import com.zy.md.ui.fragment.GankMeiziFragment;
 import com.zy.md.ui.fragment.SampleFragment;
@@ -39,7 +40,7 @@ public class HomeActivity extends BaseActivity {
     private void setupView() {
         mFragments.put(FIRST_FRAGMENT_TAG, new GankFragment());
         mFragments.put(SECOND_FRAGMENT_TAG, new GankMeiziFragment());
-        mFragments.put(THIRD_FRAGMENT_TAG, new SampleFragment());
+        mFragments.put(THIRD_FRAGMENT_TAG, new DouBanFragment());
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()

@@ -37,10 +37,13 @@ public abstract class BaseFragment extends Fragment {
     @Override
     @CallSuper
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        setupComponent();
+        getPresenter();
     }
 
-    protected void setupComponent(){};
+    /***
+     * 用于获取presenter, 以便设置presenter的生命周期
+     */
+    protected void getPresenter(){};
 
     @Override
     public void onDestroyView() {
