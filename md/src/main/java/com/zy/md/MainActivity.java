@@ -15,7 +15,6 @@ import com.zy.md.base.view.recycleview.BaseRecyclerAdapter;
 import com.zy.md.base.view.recycleview.DividerItemDecorarion;
 import com.zy.md.main.ui.BannerAdapter;
 import com.zy.md.main.ui.GankAdapter;
-import com.zy.md.ui.component.DaggerMainActivityComponent;
 
 import javax.inject.Inject;
 

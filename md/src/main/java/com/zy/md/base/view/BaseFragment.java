@@ -51,4 +51,13 @@ public abstract class BaseFragment extends Fragment {
     <T extends View> T $(@IdRes int id){
         return (T) getView().findViewById( id );
     }
+
+    /* 创建实例时复制参考
+    public static BaseFragment newInstance(){
+        BaseFragment fragment = new BaseFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
+    */
 }

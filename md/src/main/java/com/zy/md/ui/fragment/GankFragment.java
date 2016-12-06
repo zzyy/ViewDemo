@@ -4,12 +4,12 @@ import com.zy.md.R;
 import com.zy.md.base.view.BaseFragment;
 
 /**
- * Created by Simon on 2016/12/1.
+ * Created by Simon on 2016/12/6.
  */
 
-public class SampleFragment extends BaseFragment {
+public class GankFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_sample;
+        return R.layout.fragment_gank;
     }
 }

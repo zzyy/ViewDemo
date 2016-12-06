@@ -2,6 +2,7 @@ package com.zy.md.base;
 
 import android.app.Application;
 
+import com.zy.md.data.net.DouBanGirlApi;
 import com.zy.md.data.net.GankApi;
 import com.zy.md.data.net.ServerModule;
 import com.zy.md.ui.di.GanMeiziModule;
@@ -21,6 +22,8 @@ public interface AppComponent {
     Application getApplication();
 
     GankApi getGankApi();
+
+    DouBanGirlApi getDouBanGirlApi();
 
     GankMeiziFragmentComponent plus(GanMeiziModule module);
 }
