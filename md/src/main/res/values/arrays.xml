@@ -10,6 +10,10 @@
         <item>大杂烩</item>
     </string-array>
 
+    <array name="sdf">
+        <item>1</item>
+    </array>
+
     <string-array name="girl_cid">
         <item>2</item>
         <item>6</item>

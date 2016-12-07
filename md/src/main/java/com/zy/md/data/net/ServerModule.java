@@ -25,7 +25,7 @@ public class ServerModule {
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .addInterceptor(logging)
+//                .addInterceptor(logging)
                 .build();
 
         return okHttpClient;
@@ -52,7 +52,7 @@ public class ServerModule {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl( DouBanGirlApi.BASE_URL )
                 .callFactory( okHttpClient )
-                .addConverterFactory(GsonConverterFactory.create())
+//                .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
         return retrofit.create( DouBanGirlApi.class );

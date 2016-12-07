@@ -9,9 +9,18 @@ import android.view.View;
 import com.zy.md.R;
 import com.zy.md.base.view.BaseFragment;
 
+import butterknife.BindArray;
 import butterknife.BindView;
 
 public class DouBanFragment extends BaseFragment {
+
+    @BindArray(R.array.girl_cid)
+    String[] mGirlCids;
+
+    @BindArray(R.array.girl)
+    String[] mGirlTitles;
+
+
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
