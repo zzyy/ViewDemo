@@ -1,5 +1,6 @@
 package com.zy.md.data.net;
 
+import okhttp3.ResponseBody;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -16,8 +17,8 @@ public interface DouBanGirlApi {
 
 
     @GET("show.htm")
-    Observable<String> getGirlItemData(@Query("cid") int cid, @Query("pager_offset") int pager_offset);
+    Observable<ResponseBody> getGirlItemData(@Query("cid") int cid, @Query("pager_offset") int pager_offset);
 
     @GET("{id}")
-    Observable<String> getGirlDetailData(@Path("id") String id);
+    Observable<ResponseBody> getGirlDetailData(@Path("id") String id);
 }

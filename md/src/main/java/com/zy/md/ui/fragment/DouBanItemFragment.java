@@ -18,11 +18,15 @@ import javax.inject.Inject;
  */
 
 public class DouBanItemFragment extends BaseFragment {
-    private static final String ARGS_ID = "id";
-    private static final String ARGS_TITLE = "title";
-    private int mId;
+    private String mId;
     private String mTitle;
 
+    public DouBanItemFragment() {}
+
+    public DouBanItemFragment(String id, String title) {
+        mId = id;
+        mTitle = title;
+    }
 
     @Inject
     DouBanItemPresenter mPresenter;
@@ -36,22 +40,11 @@ public class DouBanItemFragment extends BaseFragment {
                 .inject(this);
     }
 
-    public static DouBanItemFragment newInstance(int id, String title){
-        DouBanItemFragment fragment = new DouBanItemFragment();
-        Bundle args = new Bundle();
-        args.putInt( ARGS_ID, id );
-        args.putString( ARGS_TITLE, title );
-        fragment.setArguments(args);
-        return fragment;
+
+    public String getTitle() {
+        return mTitle;
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Bundle args = getArguments();
-        mId = args.getInt( ARGS_ID );
-        mTitle = args.getString( ARGS_TITLE );
-    }
 
     @Override
     protected int getLayoutId() {
