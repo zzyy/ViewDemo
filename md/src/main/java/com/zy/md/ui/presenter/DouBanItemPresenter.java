@@ -41,19 +41,16 @@ public class DouBanItemPresenter extends BasePresenter {
     public void loadData() {
         mDouBanGirlApi.getGirlItemData(2, 20)
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(s -> { Logger.d(s); }
-                ,throwable -> { Logger.e(throwable, "douban error"); });
-                /*.map(s -> {
+                .map(s -> {
                     List<DouBanGirlItemData> datas = DouBanJsoupParseUtil.parseGirls(s);
                     Logger.d(datas);
                     return datas;
-                })*/
-                /*.observeOn(AndroidSchedulers.mainThread())
+                })
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(douBanGirlItemDatas -> {
 
                 }, throwable -> {
-                });*/
+                });
 
     }
 

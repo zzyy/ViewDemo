@@ -17,8 +17,8 @@ public interface DouBanGirlApi {
 
 
     @GET("show.htm")
-    Observable<ResponseBody> getGirlItemData(@Query("cid") int cid, @Query("pager_offset") int pager_offset);
+    Observable<String> getGirlItemData(@Query("cid") int cid, @Query("pager_offset") int pager_offset);
 
     @GET("{id}")
-    Observable<ResponseBody> getGirlDetailData(@Path("id") String id);
+    Observable<String> getGirlDetailData(@Path("id") String id);
 }

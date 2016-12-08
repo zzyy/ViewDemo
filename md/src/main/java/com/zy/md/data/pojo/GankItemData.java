@@ -2,6 +2,7 @@ package com.zy.md.data.pojo;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -10,37 +11,21 @@ import java.util.List;
 
 public class GankItemData {
     @SerializedName("_id")
-    String id;
-
-    String createdAt;
-
-    String desc;
-
-    List<String> images;
-
-    String publishedAt;
-
-    String source;
-
-    String type;
-
-    String url;
-
-    boolean used;
-
-    String who;
+    public String id;
+    public Date createdAt;
+    public String desc;
+    public List<String> images;
+    public Date publishedAt;
+    public String source;
+    public String type;
+    public String url;
+    public boolean used;
+    public String who;
 
     //图片的宽高
     public int width;
     public int height;
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
 
     public String getDesc() {
         return desc;
@@ -66,14 +51,6 @@ public class GankItemData {
         this.images = images;
     }
 
-    public String getPublishedAt() {
-        return publishedAt;
-    }
-
-    public void setPublishedAt(String publishedAt) {
-        this.publishedAt = publishedAt;
-    }
-
     public String getSource() {
         return source;
     }
@@ -94,23 +71,4 @@ public class GankItemData {
         return url;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public boolean isUsed() {
-        return used;
-    }
-
-    public void setUsed(boolean used) {
-        this.used = used;
-    }
-
-    public String getWho() {
-        return who;
-    }
-
-    public void setWho(String who) {
-        this.who = who;
-    }
 }
