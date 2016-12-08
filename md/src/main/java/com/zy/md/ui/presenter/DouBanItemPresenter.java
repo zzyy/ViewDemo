@@ -15,6 +15,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import rx.Observable;
+import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
@@ -38,20 +39,35 @@ public class DouBanItemPresenter extends BasePresenter {
     }
 
 
+    Subscriber mLoadDataSubscriber = new Subscriber() {
+        @Override
+        public void onCompleted() {
+
+        }
+
+        @Override
+        public void onError(Throwable e) {
+
+        }
+
+        @Override
+        public void onNext(Object o) {
+
+        }
+    };
+
     public void loadData() {
         mDouBanGirlApi.getGirlItemData(2, 20)
                 .subscribeOn(Schedulers.io())
-                .map(s -> {
-                    List<DouBanGirlItemData> datas = DouBanJsoupParseUtil.parseGirls(s);
-                    Logger.d(datas);
-                    return datas;
-                })
+                .map(s -> DouBanJsoupParseUtil.parseGirls(s) )
+                .flatMap(Observable::from)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(douBanGirlItemDatas -> {
 
-                }, throwable -> {
-                });
+                }, throwable ->  Logger.e(throwable, "加载豆瓣数据报错") );
 
     }
+
+
 
 }

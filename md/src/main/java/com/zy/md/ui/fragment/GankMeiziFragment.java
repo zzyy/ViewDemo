@@ -67,10 +67,10 @@ public class GankMeiziFragment extends BaseFragment {
 
     private void setupView() {
         mAdapter = new GankPicturesAdapter();
-        StaggeredGridLayoutManager mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        mLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        layoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
 
-        mContentRecyclerView.setLayoutManager(mLayoutManager);
+        mContentRecyclerView.setLayoutManager(layoutManager);
         mContentRecyclerView.setAdapter(mAdapter);
 
         ItemClickSupport.addTo(mContentRecyclerView)

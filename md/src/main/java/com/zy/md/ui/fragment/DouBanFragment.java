@@ -45,6 +45,7 @@ public class DouBanFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        
         mToolbar.setTitle("DouBan");
 
         List<DouBanItemFragment> fragmentList = new ArrayList<>();
