@@ -19,7 +19,7 @@ import com.zy.md.utils.common.ToastUtils;
 import com.zy.md.base.view.BaseActivity;
 import com.zy.md.base.view.recycleview.BaseRecyclerAdapter;
 import com.zy.md.base.view.recycleview.BaseRecyclerHolder;
-import com.zy.md.base.view.recycleview.DividerItemDecorarion;
+import com.zy.md.base.view.recycleview.DividerDecorarion;
 import com.zy.md.base.view.recycleview.ItemClickSupport;
 
 import java.util.ArrayList;
@@ -65,7 +65,7 @@ public class TestActivity extends BaseActivity {
         RecycleViewAdapter adapter = new RecycleViewAdapter();
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.setLayoutManager( new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        mRecyclerView.addItemDecoration( new DividerItemDecorarion(20, 15, 20, 15));
+        mRecyclerView.addItemDecoration( new DividerDecorarion(20, 15, 20, 15));
 
 //        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL );
 //        dividerItemDecoration.setDrawable(new ShapeDrawable( new RectShape()));

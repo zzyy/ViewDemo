@@ -12,7 +12,7 @@ import com.zy.md.data.net.GankApi;
 import com.zy.md.base.view.BaseActivity;
 import com.zy.md.main.TestActivity;
 import com.zy.md.base.view.recycleview.BaseRecyclerAdapter;
-import com.zy.md.base.view.recycleview.DividerItemDecorarion;
+import com.zy.md.base.view.recycleview.DividerDecorarion;
 import com.zy.md.main.ui.BannerAdapter;
 import com.zy.md.main.ui.GankAdapter;
 import com.zy.md.ui.component.DaggerMainActivityComponent;
@@ -70,7 +70,7 @@ public class MainActivity extends BaseActivity {
 
         mRecyclerAdapter = new GankAdapter();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        mRecyclerView.addItemDecoration( new DividerItemDecorarion(20, 15, 20, 15));
+        mRecyclerView.addItemDecoration( new DividerDecorarion(20, 15, 20, 15));
 
         mRecyclerAdapter.setItemClickListener(new BaseRecyclerAdapter.ItemClickListener() {
             @Override

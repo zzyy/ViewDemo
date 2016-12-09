@@ -26,11 +26,7 @@
             android:name=".ui.activity.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.activity.ViewerActivity"
@@ -38,6 +34,16 @@
             android:theme="@style/AppTheme">
         </activity>
         <activity android:name=".ui.activity.SingleImageActivity">
+        </activity>
+        <activity android:name=".ui.activity.DesignSampleActivity">
+        </activity>
+        <activity android:name=".ui.activity.RippleSampleActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 

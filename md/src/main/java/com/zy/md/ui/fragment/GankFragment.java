@@ -1,23 +1,32 @@
 package com.zy.md.ui.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.orhanobut.logger.Logger;
 import com.zy.md.R;
+import com.zy.md.base.App;
 import com.zy.md.base.view.BaseFragment;
 import com.zy.md.base.view.recycleview.BaseRecyclerAdapter;
 import com.zy.md.base.view.recycleview.BaseRecyclerHolder;
+import com.zy.md.base.view.recycleview.DividerDecorarion;
+import com.zy.md.data.pojo.GankItemData;
+import com.zy.md.ui.di.DaggerGankFragmentComponent;
+import com.zy.md.ui.di.GankFragmentModule;
+import com.zy.md.ui.presenter.GankFragmentPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 
@@ -27,6 +36,9 @@ import butterknife.BindView;
 
 public class GankFragment extends BaseFragment {
 
+    @Inject
+    GankFragmentPresenter mPresenter;
+
     @BindView(R.id.abl_gank)
     AppBarLayout mAppBarLayout;
 
@@ -35,6 +47,7 @@ public class GankFragment extends BaseFragment {
 
     @BindView(R.id.rv_gank_content)
     RecyclerView mRecyclerView;
+    private Adapter mAdapter;
 
     @Override
     protected int getLayoutId() {
@@ -45,27 +58,52 @@ public class GankFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setupView();
+
+        loadCatalogData();
     }
+
+
 
     private void setupView() {
 
-        mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                int totalRange = appBarLayout.getTotalScrollRange();
+        mAppBarLayout.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
+            final int totalRange = appBarLayout.getTotalScrollRange();
 
-                Logger.d("totalRange="+ totalRange + "; current=" + verticalOffset);
-            }
         });
 
-        Adapter adapter = new Adapter();
+        mAdapter = new Adapter();
 
         mRecyclerView.setLayoutManager( new LinearLayoutManager(getContext()));
-        mRecyclerView.setAdapter(adapter);
+        mRecyclerView.addItemDecoration( new DividerDecorarion( 30, 20, 30, 20 ));
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+    private void loadCatalogData() {
+        mPresenter.loadCatalogData( 1 );
+    }
+
+    public void onLoadCatalogDataComplete( List<GankItemData> datas ){
+        mAdapter.addData( datas );
+    }
+
+    public void onLoadCatalogDataError(){
+
+    }
+
+    @Override
+    public GankFragmentPresenter getPresenter() {
+        if (mPresenter == null){
+            DaggerGankFragmentComponent.builder()
+                    .appComponent( App.getContext().getAppComponent() )
+                    .gankFragmentModule( new GankFragmentModule(this))
+                    .build()
+                    .inject( this );
+        }
+        return mPresenter;
     }
 }
 
-class Adapter extends BaseRecyclerAdapter<String>{
+class Adapter extends BaseRecyclerAdapter<GankItemData>{
     static List<String> DATA = new ArrayList<>(50);
     static {
         for (int i =0; i<50; i++){
@@ -74,12 +112,17 @@ class Adapter extends BaseRecyclerAdapter<String>{
     }
 
     public Adapter() {
-        super(DATA, android.R.layout.simple_list_item_1);
+        super(null, R.layout.item_gank_fragment_adapter);
     }
 
     @Override
-    public void onBindViewHolder(BaseRecyclerHolder holder, int position, String itemData) {
-        TextView view = holder.getView(android.R.id.text1);
-        view.setText( getItem(position) );
+    public void onBindViewHolder(BaseRecyclerHolder holder, int position, GankItemData itemData) {
+        TextView titleTextView = holder.getView( R.id.tv_desc_item_gank );
+        ImageView picImageView = holder.getView(R.id.iv_image_item_gank);
+        Glide.with(App.getContext())
+                .load( itemData.url )
+                .centerCrop()
+                .into( picImageView );
+        titleTextView.setText( itemData.desc );
     }
 }

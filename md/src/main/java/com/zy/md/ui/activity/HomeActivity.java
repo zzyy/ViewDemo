@@ -68,6 +68,7 @@ public class HomeActivity extends BaseActivity {
             return true;
         });
 
+        bottomNavigationView.setSelected(true);
     }
 
     private void showFragment(String tag) {

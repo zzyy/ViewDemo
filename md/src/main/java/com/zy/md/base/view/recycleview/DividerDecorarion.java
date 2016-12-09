@@ -9,7 +9,7 @@ import android.view.View;
  * Created by Simon on 2016/11/16.
  */
 
-public class DividerItemDecorarion extends RecyclerView.ItemDecoration {
+public class DividerDecorarion extends RecyclerView.ItemDecoration {
     private int mLeftOffset;
     private int mTopOffset;
     private int mRightOffset;
@@ -20,7 +20,7 @@ public class DividerItemDecorarion extends RecyclerView.ItemDecoration {
         outRect.set(mLeftOffset, mTopOffset, mRightOffset, mBottomOffset);
     }
 
-    public DividerItemDecorarion(int mBottomOffset, int mLeftOffset, int mRightOffset, int mTopOffset) {
+    public DividerDecorarion(int mLeftOffset, int mRightOffset, int mTopOffset, int mBottomOffset) {
         this.mBottomOffset = mBottomOffset;
         this.mLeftOffset = mLeftOffset;
         this.mRightOffset = mRightOffset;
