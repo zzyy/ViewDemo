@@ -3,6 +3,7 @@ package com.zy.md.ui.presenter;
 import android.support.annotation.IntRange;
 
 import com.orhanobut.logger.Logger;
+import com.zy.md.base.view.BasePresenter;
 import com.zy.md.data.model.GankMeiziFragmentModel;
 import com.zy.md.ui.fragment.GankMeiziFragment;
 
@@ -13,7 +14,7 @@ import rx.android.schedulers.AndroidSchedulers;
  * Created by Simon on 2016/11/24.
  */
 
-public class GankMeiziFragmentPresenter {
+public class GankMeiziFragmentPresenter extends BasePresenter {
     private static final int PAGE_SIZE = 20;
 
     GankMeiziFragmentModel mGankMeiziModel;

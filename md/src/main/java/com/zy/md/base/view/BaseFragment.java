@@ -43,17 +43,19 @@ public abstract class BaseFragment extends Fragment {
     /***
      * 用于获取presenter, 以便设置presenter的生命周期
      */
-    protected void getPresenter(){};
+    protected BasePresenter getPresenter(){return null;}
 
     @Override
     public void onDestroyView() {
-        super.onDestroyView();
+        getPresenter().onDestroyView();
         mButterKnifeUnbinder.unbind();
+        super.onDestroyView();
     }
 
     <T extends View> T $(@IdRes int id){
         return (T) getView().findViewById( id );
     }
+
 
     /* 创建实例时复制参考
     public static BaseFragment newInstance(){

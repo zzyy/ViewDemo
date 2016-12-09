@@ -14,6 +14,7 @@ import com.orhanobut.logger.Logger;
 import com.zy.md.R;
 import com.zy.md.base.App;
 import com.zy.md.base.view.BaseFragment;
+import com.zy.md.base.view.BasePresenter;
 import com.zy.md.base.view.recycleview.BaseRecyclerAdapter;
 import com.zy.md.base.view.recycleview.ItemClickSupport;
 import com.zy.md.data.pojo.GankItemData;
@@ -95,9 +96,13 @@ public class GankMeiziFragment extends BaseFragment {
         mPresenter.loadData(1);
     }
 
-    protected void getPresenter() {
-        App.getContext().getAppComponent()
-                .plus(new GanMeiziModule(this))
-                .inject(this);
+    protected BasePresenter getPresenter() {
+        if (mPresenter == null){
+
+            App.getContext().getAppComponent()
+                    .plus(new GanMeiziModule(this))
+                    .inject(this);
+        }
+        return mPresenter;
     }
 }

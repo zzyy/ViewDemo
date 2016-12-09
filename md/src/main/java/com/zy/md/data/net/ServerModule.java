@@ -23,10 +23,10 @@ public class ServerModule {
     @Provides
     public OkHttpClient provideOkHttpClient() {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+        logging.setLevel(HttpLoggingInterceptor.Level.BASIC);
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
-//                .addInterceptor(logging)
+                .addInterceptor(logging)
                 .build();
 
         return okHttpClient;

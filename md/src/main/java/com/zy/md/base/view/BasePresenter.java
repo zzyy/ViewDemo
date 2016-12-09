@@ -5,4 +5,7 @@ package com.zy.md.base.view;
  */
 
 public class BasePresenter {
+    public void onDestroyView() {
+
+    }
 }

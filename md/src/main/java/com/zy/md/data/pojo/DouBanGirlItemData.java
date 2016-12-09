@@ -8,12 +8,12 @@ import android.os.Parcelable;
  * Time: 2016/8/17 10:12
  */
 public class DouBanGirlItemData implements Parcelable {
-    private String title;
-    private String url;
-    private String id;
-    private int width;
-    private int height;
-    private String subtype;
+    public String title;
+    public String url;
+    public String id;
+    public int width;
+    public int height;
+    public String subtype;
 
     public DouBanGirlItemData() {
     }

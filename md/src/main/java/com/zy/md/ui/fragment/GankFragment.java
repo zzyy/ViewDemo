@@ -48,6 +48,7 @@ public class GankFragment extends BaseFragment {
     }
 
     private void setupView() {
+
         mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
