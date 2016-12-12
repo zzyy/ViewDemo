@@ -2,8 +2,12 @@ package com.zy.md.ui.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.zy.md.R;
@@ -11,7 +15,6 @@ import com.zy.md.base.view.BaseActivity;
 import com.zy.md.ui.fragment.DouBanFragment;
 import com.zy.md.ui.fragment.GankFragment;
 import com.zy.md.ui.fragment.GankMeiziFragment;
-import com.zy.md.ui.fragment.SampleFragment;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,13 +31,15 @@ public class HomeActivity extends BaseActivity {
     @BindView(R.id.home_content)
     View mContentView;
 
+    @BindView(R.id.home_drawer_nav_view)
+    NavigationView mNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
         setupView();
-
     }
 
     private void setupView() {
@@ -45,11 +50,11 @@ public class HomeActivity extends BaseActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .add(R.id.home_content, mFragments.get(FIRST_FRAGMENT_TAG), FIRST_FRAGMENT_TAG)
-                .hide( mFragments.get(FIRST_FRAGMENT_TAG) )
+                .hide(mFragments.get(FIRST_FRAGMENT_TAG))
                 .add(R.id.home_content, mFragments.get(SECOND_FRAGMENT_TAG), SECOND_FRAGMENT_TAG)
-                .hide( mFragments.get(SECOND_FRAGMENT_TAG) )
+                .hide(mFragments.get(SECOND_FRAGMENT_TAG))
                 .add(R.id.home_content, mFragments.get(THIRD_FRAGMENT_TAG), THIRD_FRAGMENT_TAG)
-                .hide( mFragments.get(THIRD_FRAGMENT_TAG) )
+                .hide(mFragments.get(THIRD_FRAGMENT_TAG))
                 .commit();
 
         BottomNavigationView bottomNavigationView = $(R.id.bnv_home);
@@ -69,7 +74,20 @@ public class HomeActivity extends BaseActivity {
         });
 
         bottomNavigationView.setSelected(true);
+
+        mNavigationView.setNavigationItemSelectedListener(this::onNavigationSelected);
     }
+
+    private boolean onNavigationSelected(MenuItem menuItem) {
+        int id = menuItem.getItemId();
+        if (id == R.id.nav_ripple) {
+            start(RippleSampleActivity.class);
+        } else if (id == R.id.nav_reveal) {
+            start(RevealSampleActivity.class);
+        }
+        return true;
+    }
+
 
     private void showFragment(String tag) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -86,4 +104,13 @@ public class HomeActivity extends BaseActivity {
                 .commit();
     }
 
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawerLayout = $(R.id.home_drawer_layout);
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 }

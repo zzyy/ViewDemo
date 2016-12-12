@@ -11,7 +11,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
-    tools:context="com.zy.md.ui.activity.RippleSampleActivity">
+    tools:context="com.zy.md.ui.activity.RippleSampleActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Button
         android:layout_width="wrap_content"
@@ -23,9 +24,54 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:text="ripple with mask"
+        android:background="@drawable/ripple_with_mask"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:text="ripple with color"
         android:background="@drawable/ripple_with_color"
         />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:clickable="true"
+        android:text="ripple w/o bound"
+        android:background="@drawable/ripple_without_bound"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:clickable="true"
+        android:src="@drawable/ic_favorite_border_black_24dp"
+        android:background="@drawable/ripple_without_bound"
+        />
+
+
+    <com.andexert.library.RippleView
+        android:id="@+id/ripple_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectagle"
+        android:layout_margin="10dp"
+        app:rv_color="#F00"
+        app:rv_alpha="255"
+        app:rv_type="rectangle"
+        app:rv_framerate="30"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="低版本的ripple"
+            />
+
+    </com.andexert.library.RippleView>
 
 </LinearLayout>

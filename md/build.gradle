@@ -74,4 +74,7 @@ dependencies {
     compile 'org.jsoup:jsoup:1.9.2'
 
     compile 'com.github.bumptech.glide:glide:3.7.0'
+
+    // 低版本兼容的水波纹效果
+    compile 'com.github.traex.rippleeffect:library:1.3'
 }
