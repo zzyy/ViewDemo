@@ -1,5 +1,6 @@
 package com.zy.md.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
@@ -14,11 +15,13 @@ import com.bumptech.glide.Glide;
 import com.orhanobut.logger.Logger;
 import com.zy.md.R;
 import com.zy.md.base.App;
+import com.zy.md.base.view.BaseActivity;
 import com.zy.md.base.view.BaseFragment;
 import com.zy.md.base.view.recycleview.BaseRecyclerAdapter;
 import com.zy.md.base.view.recycleview.BaseRecyclerHolder;
 import com.zy.md.base.view.recycleview.DividerDecorarion;
 import com.zy.md.data.pojo.GankItemData;
+import com.zy.md.ui.activity.GankSearchActivity;
 import com.zy.md.ui.di.DaggerGankFragmentComponent;
 import com.zy.md.ui.di.GankFragmentModule;
 import com.zy.md.ui.presenter.GankFragmentPresenter;
@@ -29,6 +32,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by Simon on 2016/12/6.
@@ -88,6 +92,12 @@ public class GankFragment extends BaseFragment {
 
     public void onLoadCatalogDataError(){
 
+    }
+
+    @OnClick(R.id.gank_search_view)
+    void onClick(View v){
+        Intent intent = new Intent(getContext(), GankSearchActivity.class);
+        BaseActivity.start(getActivity(), intent);
     }
 
     @Override

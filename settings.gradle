@@ -1,1 +1,1 @@
-include ':app', ':md'
+include ':app', ':md', ':ExRecyclerView'

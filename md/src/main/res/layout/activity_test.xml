@@ -13,7 +13,7 @@
         android:layout_height="240dp"
         android:fitsSystemWindows="true"
         app:layout_behavior="android.support.design.widget.AppBarLayoutSpringBehavior"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        >
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
