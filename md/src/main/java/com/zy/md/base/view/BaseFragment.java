@@ -47,7 +47,9 @@ public abstract class BaseFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
-        getPresenter().onDestroyView();
+        if (getPresenter() != null){
+            getPresenter().onDestroyView();
+        }
         mButterKnifeUnbinder.unbind();
         super.onDestroyView();
     }

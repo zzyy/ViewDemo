@@ -34,6 +34,9 @@ public class HomeActivity extends BaseActivity {
     @BindView(R.id.home_drawer_nav_view)
     NavigationView mNavigationView;
 
+    @BindView(R.id.home_drawer_layout)
+    DrawerLayout mDrawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +88,9 @@ public class HomeActivity extends BaseActivity {
         } else if (id == R.id.nav_reveal) {
             start(RevealSampleActivity.class);
         }
+
+        mDrawerLayout.closeDrawer( GravityCompat.START );
+
         return true;
     }
 
@@ -106,9 +112,8 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawerLayout = $(R.id.home_drawer_layout);
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
