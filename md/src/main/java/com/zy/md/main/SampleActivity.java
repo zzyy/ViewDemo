@@ -28,7 +28,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class TestActivity extends BaseActivity {
+public class SampleActivity extends BaseActivity {
 
     @BindView(R.id.iv_test_head)
     ImageView mHeadImageView;
@@ -42,7 +42,6 @@ public class TestActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setStatusBarColor(Color.TRANSPARENT);
         setContentView(R.layout.activity_test);
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
@@ -131,7 +130,7 @@ public class TestActivity extends BaseActivity {
                 final int position = mRecyclerView.getChildAdapterPosition( view );
 
                 view.findViewById(R.id.iv_favorite).setOnClickListener( v -> {
-                    ToastUtils.getInstance( TestActivity.this ).s("position:" + position);
+                    ToastUtils.getInstance( SampleActivity.this ).s("position:" + position);
                 });
             }
 

@@ -50,4 +50,9 @@ public class BaseActivity extends AppCompatActivity {
 
         ActivityCompat.startActivity(activity, intent, transitionOptions.toBundle());
     }
+
+    protected String rxClick(@IdRes int id){
+//        return RxView
+        return null;
+    }
 }

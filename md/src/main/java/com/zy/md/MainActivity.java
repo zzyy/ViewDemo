@@ -10,7 +10,7 @@ import com.orhanobut.logger.Logger;
 import com.zy.md.base.App;
 import com.zy.md.data.net.GankApi;
 import com.zy.md.base.view.BaseActivity;
-import com.zy.md.main.TestActivity;
+import com.zy.md.main.SampleActivity;
 import com.zy.md.base.view.recycleview.BaseRecyclerAdapter;
 import com.zy.md.base.view.recycleview.DividerDecorarion;
 import com.zy.md.main.ui.BannerAdapter;
@@ -76,7 +76,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onItemClick(View view, int position) {
                 Logger.d(position);
-                start(TestActivity.class);
+                start(SampleActivity.class);
             }
         });
 

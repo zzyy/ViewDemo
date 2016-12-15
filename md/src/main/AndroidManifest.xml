@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <uses-sdk tools:overrideLibrary="com.simon.ex_recyclerview,android.support.v7.appcompat"/>
     <application
         android:name=".base.App"
         android:allowBackup="true"
@@ -12,7 +13,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:overrideLibrary="com.simon.ex_recyclerview">
+        >
         <activity android:name=".MainActivity">
         </activity>
         <activity android:name=".welcome.WelcomeActivity">
@@ -20,7 +21,7 @@
         <activity android:name=".welcome.SplashActivity">
         </activity>
         <activity
-            android:name=".main.TestActivity"
+            android:name=".main.SampleActivity"
             android:label="@string/title_activity_test"
             android:theme="@style/AppTheme">
         </activity>

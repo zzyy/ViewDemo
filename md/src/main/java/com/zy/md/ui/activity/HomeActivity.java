@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.zy.md.R;
 import com.zy.md.base.view.BaseActivity;
+import com.zy.md.main.SampleActivity;
 import com.zy.md.ui.fragment.DouBanFragment;
 import com.zy.md.ui.fragment.GankFragment;
 import com.zy.md.ui.fragment.GankMeiziFragment;
@@ -87,6 +88,8 @@ public class HomeActivity extends BaseActivity {
             start(RippleSampleActivity.class);
         } else if (id == R.id.nav_reveal) {
             start(RevealSampleActivity.class);
+        }else if (id == R.id.nav_recycler){
+            start(SampleActivity.class);
         }
 
         mDrawerLayout.closeDrawer( GravityCompat.START );
