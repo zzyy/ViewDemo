@@ -90,6 +90,10 @@ public class HomeActivity extends BaseActivity {
             start(RevealSampleActivity.class);
         }else if (id == R.id.nav_recycler){
             start(SampleActivity.class);
+        }else if (id == R.id.nav_coordinator){
+            start(CoordinatorSampleActivity.class);
+        }else if (id == R.id.nav_sample){
+            start(SampleIndexActivity.class);
         }
 
         mDrawerLayout.closeDrawer( GravityCompat.START );

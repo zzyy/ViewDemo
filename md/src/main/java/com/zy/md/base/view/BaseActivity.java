@@ -9,9 +9,11 @@ import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.jakewharton.rxbinding.view.RxView;
 import com.zy.md.utils.TransitionHelper;
 
 import butterknife.ButterKnife;
+import rx.Observable;
 
 /**
  * Created by Simon on 2016/11/2.
@@ -51,8 +53,7 @@ public class BaseActivity extends AppCompatActivity {
         ActivityCompat.startActivity(activity, intent, transitionOptions.toBundle());
     }
 
-    protected String rxClick(@IdRes int id){
-//        return RxView
-        return null;
+    protected Observable<Void> rxClick(@IdRes int id){
+        return RxView.clicks($(id));
     }
 }

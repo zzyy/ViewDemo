@@ -7,9 +7,9 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="Import"/>
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_coordinator"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery"/>
+            android:title="Coordinator"/>
 
         <item
             android:id="@+id/nav_ripple"
@@ -19,6 +19,10 @@
             android:id="@+id/nav_reveal"
             android:icon="@drawable/ic_menu_send"
             android:title="Reveal"/>
+        <item
+            android:id="@+id/nav_sample"
+            android:icon="@drawable/ic_menu_send"
+            android:title="sample"/>
     </group>
 
     <item

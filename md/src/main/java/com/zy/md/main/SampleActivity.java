@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -124,21 +125,7 @@ public class SampleActivity extends BaseActivity {
         touchHelper.attachToRecyclerView( mRecyclerView );
 
 
-        /*mRecyclerView.addOnChildAttachStateChangeListener(new RecyclerView.OnChildAttachStateChangeListener() {
-            @Override
-            public void onChildViewAttachedToWindow(View view) {
-                final int position = mRecyclerView.getChildAdapterPosition( view );
 
-                view.findViewById(R.id.iv_favorite).setOnClickListener( v -> {
-                    ToastUtils.getInstance( SampleActivity.this ).s("position:" + position);
-                });
-            }
-
-            @Override
-            public void onChildViewDetachedFromWindow(View view) {
-
-            }
-        });*/
 
         View bottomSheet = findViewById(R.id.bottom_sheet);
         final BottomSheetBehavior<View> behavior = BottomSheetBehavior.from(bottomSheet);

@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
+import android.widget.TextView;
 
 import com.simon.ex_recyclerview.BaseRecyclerAdapter;
 import com.simon.ex_recyclerview.BaseRecyclerHolder;
@@ -14,6 +15,7 @@ import com.zy.md.R;
 import com.zy.md.base.view.BaseFragment;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -32,32 +34,43 @@ public class RecyclerSampleFragment extends BaseFragment {
         RecyclerView recyclerView = (RecyclerView) view;
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter( new Adapter() );
+        Adapter adapter = new Adapter();
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(
+                new ItemTouchCallBack(ItemTouchHelper.UP|ItemTouchHelper.DOWN, ItemTouchHelper.RIGHT, adapter));
+        itemTouchHelper.attachToRecyclerView(recyclerView);
+        recyclerView.setAdapter( adapter );
 
     }
 
 
-    ItemTouchHelper.Callback mItemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(
-            ItemTouchHelper.UP|ItemTouchHelper.DOWN, ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT) {
+    static class ItemTouchCallBack extends ItemTouchHelper.SimpleCallback {
+        private ItemTouchAdapter mAdapter;
+        public ItemTouchCallBack(int dragDirs, int swipeDirs, ItemTouchAdapter adapter) {
+            super(dragDirs, swipeDirs);
+            mAdapter = adapter;
+        }
+
         @Override
         public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-            return false;
+            mAdapter.onItemMoved( viewHolder.getAdapterPosition(), target.getAdapterPosition() );
+            return true;
         }
 
         @Override
         public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-
+            mAdapter.onItemSwip( viewHolder.getAdapterPosition() );
         }
-    };
+    }
 
 
     interface ItemTouchAdapter{
-        void onItemMoved();
+        void onItemMoved(int fromPosition, int toPosition);
+        void onItemSwip(int position);
     }
 
 
 
-    static class Adapter extends BaseRecyclerAdapter<String> {
+    static class Adapter extends BaseRecyclerAdapter<String> implements ItemTouchAdapter{
         static List<String> DATA = new ArrayList<>();
         static {
             for (int i =0; i<60; i++){
@@ -66,12 +79,25 @@ public class RecyclerSampleFragment extends BaseFragment {
         }
 
         public Adapter() {
-            super(DATA, 0);
+            super(DATA, R.layout.item_test_card);
         }
 
         @Override
         public void onBindViewHolder(BaseRecyclerHolder holder, int position, String itemData) {
+            TextView textView = holder.getView(R.id.tv_item_card);
+            textView.setText( itemData );
+        }
 
+        @Override
+        public void onItemMoved(int fromPosition, int toPosition) {
+            Collections.swap(mData, fromPosition, toPosition);
+            notifyItemMoved( fromPosition, toPosition );
+        }
+
+        @Override
+        public void onItemSwip(int position) {
+            mData.remove(position);
+            notifyItemRemoved(position);
         }
     }
 }

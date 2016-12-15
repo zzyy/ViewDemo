@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/activity_coordinator_sample"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.zy.md.ui.activity.CoordinatorSampleActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        >
+
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:minHeight="80dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/statusbar_bg"
+            app:layout_scrollFlags="scroll"
+            />
+
+        <TextView
+            android:id="@+id/first_view"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#aaa"
+            android:gravity="center"
+            android:text="first bar"
+            app:layout_scrollFlags="scroll|enterAlways"
+            />
+
+        <TextView
+            android:id="@+id/secod_view"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/origain_light"
+            android:gravity="center"
+            android:text="second bar"
+            app:layout_scrollFlags="scroll"
+            />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <Button
+                android:id="@+id/btn_exit_until_collapsed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="make image exitUntilCollapsed"
+                />
+
+            <Button
+                android:id="@+id/btn_first_enter_always"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="make first enterAlways"
+                />
+
+            <Button
+                android:id="@+id/btn_make_second_no_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="make second con't scroll"
+                />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

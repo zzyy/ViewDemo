@@ -34,14 +34,11 @@ public class GankSearchActivity extends BaseActivity {
         setContentView(R.layout.activity_gank_search);
 
         setupTransitionAnimator();
-
+        setupView();
     }
 
-
-
-    @OnClick()
-    void onClick(View v){
-
+    private void setupView() {
+        rxClick(R.id.btn_search_cancel).subscribe(aVoid -> finish());
     }
 
 
