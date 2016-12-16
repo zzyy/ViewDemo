@@ -21,6 +21,7 @@ import java.util.Set;
 public class ItemClickSupport {
     //要求设置tag的id 必须是资源文件的id  用来保证唯一..
     private final static int DEFAULT_TAG_NAME = R.string.item_support_id;
+    private final static int DEFAULT_TAG_NAME_CHILD = R.string.item_support_id_child;
 
     private final RecyclerView mRecyclerView;
     private OnItemClickListener mOnItemClickListener;
@@ -51,6 +52,8 @@ public class ItemClickSupport {
             return false;
         }
     };
+
+
     private RecyclerView.OnChildAttachStateChangeListener mAttachListener
             = new RecyclerView.OnChildAttachStateChangeListener() {
         @Override
@@ -143,6 +146,7 @@ public class ItemClickSupport {
         boolean onItemLongClicked(RecyclerView recyclerView, int position, View v);
     }
 
+    /** 此方法少用  会创建大量的对象 */
     public interface OnItemChildViewClickListener{
         void onItemChildViewClicked(RecyclerView recyclerView, int position, View v);
     }

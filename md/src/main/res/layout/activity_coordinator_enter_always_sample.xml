@@ -45,7 +45,6 @@
             android:background="@color/origain_light"
             android:gravity="center"
             android:text="second bar"
-            app:layout_scrollFlags="scroll"
             />
 
     </android.support.design.widget.AppBarLayout>
@@ -60,31 +59,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:visibility="invisible">
+            >
 
-            <Button
-                android:id="@+id/btn_exit_until_collapsed"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="make image exitUntilCollapsed"
-                />
-
-            <Button
-                android:id="@+id/btn_first_enter_always"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="make first enterAlways"
-                />
-
-            <Button
-                android:id="@+id/btn_make_second_no_scroll"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="make second con't scroll"
-                />
+                android:text="@string/lorem"/>
 
         </LinearLayout>
 

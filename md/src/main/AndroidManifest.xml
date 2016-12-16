@@ -55,14 +55,18 @@
         </activity>
         <activity android:name=".ui.activity.CoordinatorSampleEnterAlwaysActivity"/>
         <activity android:name=".ui.activity.CoordinatorSampleNoScrollActivity"/>
+        <activity android:name=".ui.activity.CoordinatorSampleExitUntilCollapsedActivity"/>
+        <activity android:name=".ui.activity.CoordinatorSampleSnackBarActivity"/>
         <activity
             android:name=".ui.activity.TotalSampleActivity"
             android:label="@string/title_activity_total_sample"
             android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".ui.activity.TabSampleActivity">
+        <activity android:name=".ui.activity.TabSampleActivity"/>
+        <activity android:name=".ui.activity.SampleIndexActivity"/>
+        <activity android:name=".ui.activity.CoordinatorSampleBottomSheetActivity">
         </activity>
-        <activity android:name=".ui.activity.SampleIndexActivity">
+        <activity android:name=".ui.activity.CoordinatorSampleAllInActivity">
         </activity>
     </application>
 

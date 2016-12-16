@@ -22,14 +22,12 @@ public class CoordinatorSampleNoScrollActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_coordinator_sample);
+        setContentView(R.layout.activity_coordinator_no_scroll_sample);
 
         setupView();
     }
 
     private void setupView() {
-        rxClick(R.id.btn_exit_until_collapsed)
-                .subscribe();
 
     }
 

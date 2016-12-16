@@ -20,7 +20,7 @@ public class DividerDecorarion extends RecyclerView.ItemDecoration {
         outRect.set(mLeftOffset, mTopOffset, mRightOffset, mBottomOffset);
     }
 
-    public DividerDecorarion(int mLeftOffset, int mRightOffset, int mTopOffset, int mBottomOffset) {
+    public DividerDecorarion(int mLeftOffset, int mTopOffset, int mRightOffset,  int mBottomOffset) {
         this.mBottomOffset = mBottomOffset;
         this.mLeftOffset = mLeftOffset;
         this.mRightOffset = mRightOffset;

@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:orientation="vertical"
+    android:background="@drawable/ripple_with_mask"
+    android:stateListAnimator="@animator/item_selector_animator"
     >
 
     <TextView
@@ -21,6 +23,7 @@
         android:layout_gravity="right|center_vertical"
         android:src="@drawable/ic_favorite_border_black_24dp"
         android:layout_marginRight="8dp"
+        android:background="@drawable/ripple_without_bound"
         />
 
 </android.support.v7.widget.CardView>

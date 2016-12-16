@@ -28,14 +28,23 @@ public class CoordinatorSampleActivity extends BaseActivity {
     }
 
     private void setupView() {
+        rxClick(R.id.btn_snake_float_action_button)
+                .subscribe(aVoid -> start(CoordinatorSampleSnackBarActivity.class));
+
+        rxClick(R.id.btn_bottom_sheet)
+                .subscribe(aVoid -> start(CoordinatorSampleBottomSheetActivity.class));
+
         rxClick(R.id.btn_exit_until_collapsed)
-                .subscribe();
+                .subscribe(aVoid -> start(CoordinatorSampleExitUntilCollapsedActivity.class));
 
         rxClick(R.id.btn_first_enter_always)
                 .subscribe(aVoid -> start(CoordinatorSampleEnterAlwaysActivity.class));
 
         rxClick(R.id.btn_make_second_no_scroll)
                 .subscribe(aVoid -> start(CoordinatorSampleNoScrollActivity.class));
+
+        rxClick(R.id.btn_all_in_one)
+                .subscribe(aVoid -> start(CoordinatorSampleAllInActivity.class));
     }
 
 

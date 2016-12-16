@@ -28,8 +28,6 @@ public class CoordinatorSampleEnterAlwaysActivity extends BaseActivity {
     }
 
     private void setupView() {
-        rxClick(R.id.btn_exit_until_collapsed)
-                .subscribe();
 
     }
 
