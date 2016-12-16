@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/activity_coordinator_sample"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.zy.md.ui.activity.CoordinatorSampleActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        >
+
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:minHeight="80dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/statusbar_bg"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            />
+
+        <TextView
+            android:id="@+id/first_view"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#aaa"
+            android:gravity="center"
+            android:text="first bar"
+            app:layout_scrollFlags="scroll"
+            />
+
+        <TextView
+            android:id="@+id/secod_view"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/origain_light"
+            android:gravity="center"
+            android:text="second bar"
+            />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lorem"
+            />
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>
