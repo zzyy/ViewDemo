@@ -92,6 +92,7 @@ public class RevealSampleActivity extends BaseActivity {
                 });
                 revealAnimator.start();
 
+
             }
 
             return true;
