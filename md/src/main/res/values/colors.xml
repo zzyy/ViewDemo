@@ -7,4 +7,5 @@
 
     <color name="origain_light">#e8642b</color>
     <color name="origain_dark">#d14b10</color>
+    <color name="black_semi_transparent">#B2000000</color>
 </resources>

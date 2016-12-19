@@ -16,6 +16,7 @@ import com.zy.md.main.SampleActivity;
 import com.zy.md.ui.fragment.DouBanFragment;
 import com.zy.md.ui.fragment.GankFragment;
 import com.zy.md.ui.fragment.GankMeiziFragment;
+import com.zy.md.ui.fragment.SampleFragment;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -49,7 +50,8 @@ public class HomeActivity extends BaseActivity {
     private void setupView() {
         mFragments.put(FIRST_FRAGMENT_TAG, new GankFragment());
         mFragments.put(SECOND_FRAGMENT_TAG, new GankMeiziFragment());
-        mFragments.put(THIRD_FRAGMENT_TAG, new DouBanFragment());
+//        mFragments.put(THIRD_FRAGMENT_TAG, new DouBanFragment());
+        mFragments.put(THIRD_FRAGMENT_TAG, new SampleFragment());
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()

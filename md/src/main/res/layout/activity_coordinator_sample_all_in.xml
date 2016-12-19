@@ -39,14 +39,6 @@
                 app:layout_collapseMode="pin"
                 >
 
-                <Button
-                    android:id="@+id/btn_change_layout_manager"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|right"
-                    android:text="change"
-                    />
-
             </android.support.v7.widget.Toolbar>
 
         </android.support.design.widget.CollapsingToolbarLayout>
@@ -70,7 +62,7 @@
            />-->
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/multiple_actions_down"
+        android:id="@+id/float_action_menu_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -82,15 +74,16 @@
         app:fab_size="mini"
         app:fab_expandDirection="up"
         app:fab_labelsPosition="left"
-        app:layout_behavior="@string/bye_burger_bottom_behavior"
+        app:fab_labelStyle="@style/menu_labels_style"
+        app:layout_behavior="com.zy.md.ui.component.ScrollAwareBehavior"
         >
 
 
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/button_gone"
+            android:id="@+id/change_to_grid_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_title="测试"
+            app:fab_title="recyclerView网格布局"
             app:fab_icon="@drawable/ic_android_white_24dp"
             app:fab_stroke_visible="true"
             app:fab_size="mini"
@@ -98,12 +91,13 @@
             />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/action_enable"
+            android:id="@+id/change_to_linear_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_size="mini"
-            app:fab_title="Set bottom menu enabled/disabled"/>
+            app:fab_title="recyclerView线性布局"/>
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
 
 </android.support.design.widget.CoordinatorLayout>

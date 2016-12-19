@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/activity_behavior_sample"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.zy.md.ui.activity.BehaviorSampleActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar_view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:fitsSystemWindows="true"
+        >
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:statusBarScrim="@color/origain_dark"
+            >
+
+            <ImageView
+                android:id="@+id/appbar_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/statusbar_bg"
+                app:layout_collapseMode="parallax"
+                />
+
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+        <View
+            android:id="@+id/appbar_anchor_view"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_gravity="bottom"
+            android:background="@color/origain_dark"
+            app:layout_collapseMode="pin"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/origain_light"
+        app:layout_anchor="@id/appbar_anchor_view"
+        app:layout_anchorGravity="bottom"
+        android:layout_gravity="bottom"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_share_view"
+        android:layout_width="@dimen/image_width"
+        android:layout_height="@dimen/image_width"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/statusbar_bg"
+        android:transitionName="@string/behavior_sample_share_img"
+        app:civ_border_color="@android:color/white"
+        app:civ_border_width="2dp"
+        app:finalHeight="@dimen/image_final_width"
+        app:startXPosition="2dp"
+        app:finalYPosition="2dp"
+        app:layout_behavior="com.zy.md.ui.component.AvatarImageBehavior"
+        app:startHeight="2dp"
+        app:startToolbarPosition="2dp"
+        />
+
+</android.support.design.widget.CoordinatorLayout>

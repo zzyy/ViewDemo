@@ -33,7 +33,7 @@ public class BaseActivity extends AppCompatActivity {
         return (T) findViewById(id);
     }
 
-    protected void start(Class clazz) {
+    public void start(Class clazz) {
         Intent intent = new Intent(this, clazz);
         startActivity(intent);
     }

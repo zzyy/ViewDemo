@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
+<com.zy.md.ui.component.DragViewContainer
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <com.zy.md.base.view.cycler_viewpager.BannerViewPager
-            android:layout_width="match_parent"
-            android:layout_height="230dp"/>
+    android:layout_height="match_parent"
+    >
 
 
+    <ImageView
+        android:id="@+id/iv_share_view"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        android:src="@drawable/statusbar_bg"
+        android:transitionName="@string/behavior_sample_share_img"
+        />
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="130dp"/>
 
-    </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+</com.zy.md.ui.component.DragViewContainer>

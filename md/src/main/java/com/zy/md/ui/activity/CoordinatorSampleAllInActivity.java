@@ -9,8 +9,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.view.View;
 import android.widget.TextView;
 
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.simon.ex_recyclerview.BaseRecyclerAdapter;
 import com.simon.ex_recyclerview.BaseRecyclerHolder;
 import com.simon.ex_recyclerview.DividerDecorarion;
@@ -28,12 +30,17 @@ import butterknife.BindView;
 public class CoordinatorSampleAllInActivity extends BaseActivity {
 
     @BindView(R.id.activity_coordinator_sample_all_in)
-    CoordinatorLayout mCoordinatorLayout;
+    View mCoordinatorLayout;
+
+    @BindView(R.id.float_action_menu_view)
+    FloatingActionsMenu mFloatingActionsMenu;
 
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
 
     Adapter mAdapter;
+    private LinearLayoutManager mLinearLayoutManager;
+    private StaggeredGridLayoutManager mGrilLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +50,18 @@ public class CoordinatorSampleAllInActivity extends BaseActivity {
     }
 
     private void setupView() {
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        setupRecyclerView();
+
+        setupFloatActionMenu();
+    }
+
+
+
+    private void setupRecyclerView() {
+        mLinearLayoutManager = new LinearLayoutManager(this);
+        mGrilLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+
+        mRecyclerView.setLayoutManager(mLinearLayoutManager);
         mRecyclerView.addItemDecoration(new DividerDecorarion(20, 15, 20, 15));
         mAdapter = new Adapter();
         mRecyclerView.setAdapter(mAdapter);
@@ -67,9 +85,20 @@ public class CoordinatorSampleAllInActivity extends BaseActivity {
         ItemClickSupport.addTo(mRecyclerView)
                 .setOnItemClickListener((recyclerView, position, v) -> bottomSheetDialog.show())
                 .setChildOnClickListener(R.id.iv_favorite, (recyclerView, position, v) -> itemTouchHelper.startDrag(mRecyclerView.findViewHolderForAdapterPosition(position)));
+    }
 
-        rxClick(R.id.btn_change_layout_manager)
-                .subscribe(aVoid -> mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)));
+    private void setupFloatActionMenu() {
+        rxClick(R.id.change_to_grid_view)
+                .subscribe(aVoid -> {
+                    mRecyclerView.setLayoutManager(mGrilLayoutManager);
+                    mFloatingActionsMenu.collapse();
+                });
+
+        rxClick(R.id.change_to_linear_view)
+                .subscribe(aVoid -> {
+                    mRecyclerView.setLayoutManager(mLinearLayoutManager);
+                    mFloatingActionsMenu.collapse();
+                });
     }
 
     void onAdapterItemSwiped(int position) {

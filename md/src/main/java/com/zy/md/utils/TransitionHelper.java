@@ -6,6 +6,7 @@ package com.zy.md.utils;
 
 import android.app.Activity;
 import android.support.v4.util.Pair;
+import android.transition.Transition;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -54,5 +55,12 @@ public class TransitionHelper {
             return;
         }
         participants.add(new android.support.v4.util.Pair<>(view, view.getTransitionName()));
+    }
+
+
+    public static Transition excludeSystemUi(Transition transition){
+        transition.excludeTarget(android.R.id.statusBarBackground, true);
+        transition.excludeTarget(android.R.id.navigationBarBackground, true);
+        return transition;
     }
 }
