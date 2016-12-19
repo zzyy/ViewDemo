@@ -40,7 +40,7 @@
         <View
             android:id="@+id/appbar_anchor_view"
             android:layout_width="match_parent"
-            android:layout_height="1px"
+            android:layout_height="0px"
             android:layout_gravity="bottom"
             android:background="@color/origain_dark"
             app:layout_collapseMode="pin"/>

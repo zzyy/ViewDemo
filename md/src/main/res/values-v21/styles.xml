@@ -8,11 +8,24 @@
         <item name="android:windowActivityTransitions">true</item>
 
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
         <!--<item name="android:statusBarColor">@android:color/transparent</item>-->
     </style>
 
     <style name="AppTheme.Normal">
+
+        <!--<item name="android:windowEnterTransition"></item>
+        <item name="android:windowExitTransition"></item>
+        <item name="android:windowReenterTransition"></item>
+        <item name="android:windowReturnTransition"></item>-->
+
+       <!--  specify enter and exit transitions
+        <item name="android:windowEnterTransition">@transition/explode</item>
+        <item name="android:windowExitTransition">@transition/explode</item>
+
+        &lt;!&ndash; specify shared element transitions &ndash;&gt;
+        <item name="android:windowSharedElementEnterTransition">@transition/changebounds</item>
+        <item name="android:windowSharedElementExitTransition">@transition/changebounds</item>-->
 
     </style>
 
