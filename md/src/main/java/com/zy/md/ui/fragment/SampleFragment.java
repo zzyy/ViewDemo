@@ -13,8 +13,10 @@ import com.zy.md.R;
 import com.zy.md.base.view.BaseActivity;
 import com.zy.md.base.view.BaseFragment;
 import com.zy.md.ui.activity.BehaviorSampleActivity;
+import com.zy.md.ui.activity.GankSearchActivity;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
@@ -47,7 +49,14 @@ public class SampleFragment extends BaseFragment {
                     Intent intent = new Intent(getContext(), BehaviorSampleActivity.class);
                     BaseActivity.start(getActivity(), intent, shareElement);
                 });
+
     }
 
+
+    @OnClick(R.id.gank_search_view)
+    void onClick(View v){
+        Intent intent = new Intent(getContext(), GankSearchActivity.class);
+        BaseActivity.start(getActivity(), intent);
+    }
 
 }

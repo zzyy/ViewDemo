@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
 import android.transition.Fade;
 import android.transition.Slide;
 import android.transition.Transition;
@@ -38,7 +39,7 @@ public class GankSearchActivity extends BaseActivity {
     }
 
     private void setupView() {
-        rxClick(R.id.btn_search_cancel).subscribe(aVoid -> finish());
+        rxClick(R.id.btn_search_cancel).subscribe(aVoid -> ActivityCompat.finishAfterTransition(this));
     }
 
 

@@ -37,7 +37,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:background="@android:color/transparent"
@@ -49,8 +48,8 @@
             android:id="@+id/et_search_string"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignBaseline="@id/btn_search_cancel"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="7dp"
             android:layout_toRightOf="@id/search_icon_container_view"
             android:layout_toLeftOf="@id/btn_search_cancel"
             android:background="@android:color/transparent"
@@ -58,6 +57,7 @@
             android:textColor="#fff"
             android:textColorHint="#ededed"
             android:hint="请输入关键字"
+            android:textSize="16sp"
             />
 
 

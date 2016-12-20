@@ -69,7 +69,7 @@
         <activity android:name=".ui.activity.CoordinatorSampleAllInActivity">
         </activity>
         <activity android:name=".ui.activity.BehaviorSampleActivity"
-            android:theme="@style/AppTheme.Transparent">
+            >
         </activity>
     </application>
 

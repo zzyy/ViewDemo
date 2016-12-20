@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zy.md.ui.component.DragViewContainer
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     >
 
+
+    <FrameLayout
+        android:id="@+id/gank_search_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fitsSystemWindows="true"
+        android:background="@drawable/gank_search_bg"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/icon_searchhome"/>
+
+    </FrameLayout>
 
     <ImageView
         android:id="@+id/iv_share_view"
@@ -18,4 +35,4 @@
         />
 
 
-</com.zy.md.ui.component.DragViewContainer>
+</FrameLayout>
