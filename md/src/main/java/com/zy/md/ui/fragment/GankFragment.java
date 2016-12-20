@@ -12,7 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.orhanobut.logger.Logger;
+import com.simon.ex_recyclerview.EndlessRecyclerOnScrollListener;
+import com.simon.ex_recyclerview.HeaderAndFooterRecyclerViewAdapter;
+import com.simon.ex_recyclerview.widget.LoadingFooter;
 import com.zy.md.R;
 import com.zy.md.base.App;
 import com.zy.md.base.view.BaseActivity;
@@ -26,7 +28,6 @@ import com.zy.md.ui.di.DaggerGankFragmentComponent;
 import com.zy.md.ui.di.GankFragmentModule;
 import com.zy.md.ui.presenter.GankFragmentPresenter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -52,6 +53,7 @@ public class GankFragment extends BaseFragment {
     @BindView(R.id.rv_gank_content)
     RecyclerView mRecyclerView;
     private Adapter mAdapter;
+    private HeaderAndFooterRecyclerViewAdapter mHeaderFooterAdapter;
 
     @Override
     protected int getLayoutId() {
@@ -75,11 +77,23 @@ public class GankFragment extends BaseFragment {
 
         });
 
+
         mAdapter = new Adapter();
+        mHeaderFooterAdapter = new HeaderAndFooterRecyclerViewAdapter(mAdapter);
 
         mRecyclerView.setLayoutManager( new LinearLayoutManager(getContext()));
         mRecyclerView.addItemDecoration( new DividerDecorarion( 30, 20, 30, 20 ));
-        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setAdapter(mHeaderFooterAdapter);
+        mRecyclerView.addOnScrollListener(new EndlessRecyclerOnScrollListener(){
+            @Override
+            public void onLoadNextPage(View view) {
+                loadNextPage();
+            }
+        });
+    }
+
+    void loadNextPage(){
+        mHeaderFooterAdapter.addFooterView( new LoadingFooter(getContext()).setState(LoadingFooter.State.Loading) );
     }
 
     private void loadCatalogData() {
@@ -114,12 +128,6 @@ public class GankFragment extends BaseFragment {
 }
 
 class Adapter extends BaseRecyclerAdapter<GankItemData>{
-    static List<String> DATA = new ArrayList<>(50);
-    static {
-        for (int i =0; i<50; i++){
-            DATA.add("item " + i);
-        }
-    }
 
     public Adapter() {
         super(null, R.layout.item_gank_fragment_adapter);
